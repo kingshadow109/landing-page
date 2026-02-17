@@ -1,18 +1,56 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
 
 export const metadata: Metadata = {
-  title: "Your Product - Coming Soon",
-  description: "Join the waitlist for early access to the future of AI-powered development.",
-  keywords: ["AI", "development", "waitlist", "startup"],
-  authors: [{ name: "Your Company" }],
+  title: "WearX - AI-Powered Fashion",
+  description:
+    "Join the waitlist for WearX. AI-curated fashion meets seamless shopping. Be the first to experience the future of style.",
+  keywords: [
+    "fashion",
+    "AI fashion",
+    "wearx",
+    "style tech",
+    "fashion app",
+    "clothing",
+    "accessories",
+  ],
+  authors: [{ name: "WearX Team" }],
+  creator: "WearX",
+  publisher: "WearX",
+  robots: "index, follow",
   openGraph: {
-    title: "Your Product - Coming Soon",
-    description: "Join the waitlist for early access to the future of AI-powered development.",
     type: "website",
+    locale: "en_US",
+    url: "https://wearx.app",
+    title: "WearX - AI-Powered Fashion",
+    description:
+      "Join the waitlist for WearX. AI-curated fashion meets seamless shopping. Be the first to experience the future of style.",
+    siteName: "WearX",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WearX - AI-Powered Fashion",
+    description:
+      "Join the waitlist for WearX. AI-curated fashion meets seamless shopping. Be the first to experience the future of style.",
+    creator: "@wearx",
   },
 };
 
@@ -23,7 +61,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

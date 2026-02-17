@@ -1,149 +1,223 @@
-# Landing Page with Waitlist
+# LandingPage
 
-A modern, responsive landing page built with Next.js, TypeScript, and Tailwind CSS. Features a waitlist signup form, dark mode support, and is optimized for Vercel deployment.
+A modern, responsive landing page with waitlist functionality built with Next.js 14+, TypeScript, Tailwind CSS, and shadcn/ui.
 
-## 🚀 Quick Start
+## Features
+
+- ⚡ **Next.js 14+** - React framework with App Router
+- 🎨 **Tailwind CSS** - Utility-first CSS framework
+- 🌙 **Dark Mode** - Automatic dark mode support with next-themes
+- 📱 **Mobile Responsive** - Fully responsive design
+- 📝 **Waitlist Form** - Email capture with validation using react-hook-form and Zod
+- 🎯 **SEO Optimized** - Proper meta tags and Open Graph support
+- 🔧 **TypeScript** - Type-safe development
+- 🎭 **shadcn/ui** - Beautiful, accessible UI components
+
+## Tech Stack
+
+- **Framework:** Next.js 14+ (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **UI Components:** shadcn/ui
+- **Forms:** react-hook-form + Zod
+- **Icons:** Lucide React
+- **Theme:** next-themes
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18.17 or later
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-# Navigate to project
-cd /root/.openclaw/workspace/projects/landing-page
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Open http://localhost:3000
+git clone <your-repo-url>
+cd landing-page
 ```
 
-## 📁 Project Structure
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Run the development server:
+
+```bash
+npm run dev
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Start Production Server
+
+```bash
+npm start
+```
+
+## Project Structure
 
 ```
 landing-page/
 ├── src/
 │   ├── app/
-│   │   ├── globals.css      # Global styles
+│   │   ├── globals.css      # Global styles with Tailwind
 │   │   ├── layout.tsx       # Root layout with metadata
 │   │   └── page.tsx         # Main landing page
 │   ├── components/
-│   │   ├── ui/              # shadcn/ui components
-│   │   │   ├── button.tsx
-│   │   │   └── input.tsx
+│   │   ├── features.tsx     # Feature highlights section
+│   │   ├── footer.tsx       # Footer component
 │   │   ├── hero.tsx         # Hero section with waitlist CTA
-│   │   ├── features.tsx     # Feature highlights
-│   │   └── footer.tsx       # Footer component
-│   └── lib/
-│       └── utils.ts         # Utility functions (cn helper)
+│   │   ├── theme-provider.tsx # Dark mode provider
+│   │   ├── waitlist-form.tsx  # Email capture form
+│   │   └── ui/              # shadcn/ui components
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── input.tsx
+│   │       └── label.tsx
+│   ├── lib/
+│   │   └── utils.ts         # Utility functions (cn helper)
+│   └── types/
+│       └── index.ts         # TypeScript type definitions
 ├── public/                  # Static assets
-├── AI_PROVIDERS_SETUP.md    # AI provider free tier guide
-├── DEPLOYMENT.md            # Vercel deployment guide
-├── next.config.ts           # Next.js configuration
-└── package.json
+├── components.json          # shadcn/ui configuration
+├── next.config.js           # Next.js configuration
+├── tailwind.config.ts       # Tailwind CSS configuration
+├── tsconfig.json            # TypeScript configuration
+└── package.json             # Dependencies and scripts
 ```
 
-## 🎨 Features
+## Key Components
 
-- ✅ Modern, responsive design
-- ✅ Waitlist email capture form
-- ✅ Dark mode support
-- ✅ SEO-optimized meta tags
-- ✅ Mobile-first approach
-- ✅ TypeScript for type safety
-- ✅ Tailwind CSS for styling
-- ✅ shadcn/ui components
+### Hero Section (`components/hero.tsx`)
+- Eye-catching headline with gradient text
+- Waitlist form integration
+- Social proof statistics
+- Animated scroll indicator
 
-## 🛠️ Tech Stack
+### Waitlist Form (`components/waitlist-form.tsx`)
+- Email validation with Zod
+- Loading states
+- Success confirmation
+- Accessible form elements
 
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS v4
-- **UI Components:** shadcn/ui
-- **Icons:** Lucide React
-- **Forms:** React Hook Form + Zod (ready)
+### Features Section (`components/features.tsx`)
+- 6 feature cards with icons
+- Hover effects
+- Responsive grid layout
 
-## 📚 Documentation
+### Footer (`components/footer.tsx`)
+- Brand section with social links
+- Navigation links organized by category
+- Legal links
+- Copyright notice
 
-- **[AI_PROVIDERS_SETUP.md](./AI_PROVIDERS_SETUP.md)** - Guide to signing up for free AI API tiers
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Complete Vercel deployment guide
+## Customization
 
-## 🚢 Deployment
+### Colors
 
-### Option 1: Vercel (Recommended)
+The project uses a zinc color palette. You can customize colors in:
+- `src/app/globals.css` - CSS variables for light/dark themes
+- `tailwind.config.ts` - Tailwind theme configuration
 
-1. Push to GitHub
-2. Import to [Vercel](https://vercel.com)
-3. Auto-deploy on every push
+### Content
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
+Update the following files to customize content:
+- `src/components/hero.tsx` - Hero headline, subtitle, stats
+- `src/components/features.tsx` - Feature cards
+- `src/components/footer.tsx` - Links and branding
+- `src/app/layout.tsx` - Metadata (title, description, SEO)
 
-### Option 2: Static Export
+### Form Handling
+
+The waitlist form currently logs to console. To connect to a real backend:
+
+1. Update the `onSubmit` function in `src/components/waitlist-form.tsx`
+2. Replace the simulated API call with your actual endpoint:
+
+```typescript
+const onSubmit = async (data: WaitlistFormValues) => {
+  setIsLoading(true);
+  try {
+    const response = await fetch('/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      setIsSubmitted(true);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  } finally {
+    setIsLoading(false);
+  }
+};
+```
+
+## Deployment
+
+### Vercel (Recommended)
+
+The easiest way to deploy is using Vercel:
+
+1. Push your code to GitHub
+2. Import your repository on [Vercel](https://vercel.com)
+3. Deploy with one click
+
+### Other Platforms
+
+Build the project and deploy the `dist` folder:
 
 ```bash
 npm run build
-# Output in ./dist folder
 ```
 
-## 🔧 Customization
+For static export, update `next.config.js`:
 
-### Update Branding
+```javascript
+const nextConfig = {
+  output: 'export',
+  distDir: 'dist',
+}
+module.exports = nextConfig
+```
 
-1. Edit `src/app/layout.tsx` - Update metadata
-2. Edit `src/components/hero.tsx` - Update headline and CTA
-3. Edit `src/components/footer.tsx` - Update logo and links
+## Scripts
 
-### Connect Waitlist Backend
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-The waitlist form currently simulates success. To connect a real backend:
+## Adding shadcn/ui Components
 
-1. Choose a backend (Vercel KV, Supabase, or Notion)
-2. Create API route at `src/app/api/waitlist/route.ts`
-3. Update `handleSubmit` in `src/components/hero.tsx`
-
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for backend options.
-
-## 📝 Environment Variables
-
-Create `.env.local` for local development:
+To add more components from shadcn/ui:
 
 ```bash
-# Optional: Analytics
-NEXT_PUBLIC_GA_ID=your_google_analytics_id
-
-# Optional: Waitlist backend
-# DATABASE_URL=your_database_url
-# RESEND_API_KEY=your_resend_key
+npx shadcn add <component-name>
 ```
 
-## 🆓 Free Tier Resources
-
-| Service | Free Tier | Use Case |
-|---------|-----------|----------|
-| Vercel | 100GB/mo bandwidth | Hosting |
-| Groq | 1,440 req/day | AI/LLM |
-| Google AI Studio | 1,500 req/day | AI/LLM |
-| Resend | 3,000 emails/mo | Email notifications |
-| Supabase | 500MB database | Database |
-
-See [AI_PROVIDERS_SETUP.md](./AI_PROVIDERS_SETUP.md) for full details.
-
-## 🐛 Troubleshooting
-
-**Build fails:**
+Example:
 ```bash
-rm -rf node_modules package-lock.json
-npm install
+npx shadcn add badge
+npx shadcn add separator
 ```
 
-**Port already in use:**
-```bash
-npm run dev -- --port 3001
-```
+## License
 
-## 📄 License
+MIT License - feel free to use this template for your projects!
 
-MIT - Feel free to use for your own projects.
+## Support
 
----
-
-Built with ❤️ by 169x
+If you found this template helpful, please consider giving it a star ⭐

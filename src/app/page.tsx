@@ -6,7 +6,9 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Hero />
-      <Features />
+      <div id="features">
+        <Features />
+      </div>
       <Footer />
     </main>
   );
