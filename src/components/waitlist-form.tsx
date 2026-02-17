@@ -30,11 +30,27 @@ export function WaitlistForm() {
 
   const onSubmit = async (data: WaitlistFormValues) => {
     setIsLoading(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log("Waitlist signup:", data.email);
-    setIsLoading(false);
-    setIsSubmitted(true);
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: data.email }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        const error = await response.json();
+        alert(error.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Waitlist submission error:", error);
+      alert("Failed to submit. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSubmitted) {
