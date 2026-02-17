@@ -1,5 +1,10 @@
 import { OutfitRecommender } from "@/components/outfit-recommender";
 
+export const metadata = {
+  title: "AI Outfit Stylist | WearX",
+  description: "Get personalized outfit recommendations based on your wardrobe, weather, occasion, and style preferences.",
+};
+
 export default function OutfitsPage() {
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
@@ -10,7 +15,8 @@ export default function OutfitsPage() {
           </h1>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
             Get personalized outfit recommendations based on your wardrobe, 
-            occasion, and style preferences. Our AI matches colors, styles, and seasons.
+            occasion, and style preferences. Our AI matches colors, styles, seasons,
+            <span className="text-blue-600 dark:text-blue-400 font-medium"> and real-time weather</span>.
           </p>
         </div>
 
