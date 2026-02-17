@@ -2,6 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
+// Google Analytics 4 Measurement ID
+const GA_TRACKING_ID = 'G-FSP1DKFFWV';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,6 +69,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
+        {GA_TRACKING_ID && <GoogleAnalytics gaId={GA_TRACKING_ID} />}
       </body>
     </html>
   );
