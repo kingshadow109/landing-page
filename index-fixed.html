@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WearX - AI-Powered Fashion</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FSP1DKFFWV"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FSP1DKFFWV');</script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--primary:#18181b;--secondary:#71717a;--accent:#ff6b6b;--bg:#fafafa;--card:rgba(255,255,255,0.8)}
+        @media(prefers-color-scheme:dark){:root{--primary:#fafafa;--secondary:#a1a1aa;--bg:#09090b;--card:rgba(24,24,27,0.8)}}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--primary);line-height:1.6}
+        
+        /* HERO */
+        .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;background:linear-gradient(135deg,#fafafa 0%,#f4f4f5 50%,#e4e4e7 100%);position:relative}
+        @media(prefers-color-scheme:dark){.hero{background:linear-gradient(135deg,#09090b 0%,#18181b 50%,#27272a 100%)}}
+        .hero::before{content:'';position:absolute;top:10%;left:5%;width:300px;height:300px;background:radial-gradient(circle,rgba(24,24,27,0.1) 0%,transparent 70%);border-radius:50%;filter:blur(60px)}
+        .hero::after{content:'';position:absolute;bottom:20%;right:5%;width:400px;height:400px;background:radial-gradient(circle,rgba(24,24,27,0.08) 0%,transparent 70%);border-radius:50%;filter:blur(80px)}
+        .badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:var(--card);border:1px solid #e4e4e7;border-radius:9999px;font-size:0.875rem;font-weight:500;color:var(--secondary);margin-bottom:2rem;backdrop-filter:blur(10px)}
+        @media(prefers-color-scheme:dark){.badge{border-color:#27272a;background:rgba(24,24,27,0.8)}}
+        h1{font-size:clamp(2.5rem,8vw,5rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem;letter-spacing:-0.02em}
+        .gradient-text{background:linear-gradient(135deg,#52525b 0%,#18181b 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        @media(prefers-color-scheme:dark){.gradient-text{background:linear-gradient(135deg,#a1a1aa 0%,#fafafa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}}
+        .subtitle{font-size:clamp(1.125rem,2.5vw,1.5rem);color:var(--secondary);max-width:600px;margin-bottom:3rem}
+        
+        /* FORM */
+        .waitlist-box{background:var(--card);backdrop-filter:blur(10px);border-radius:1rem;padding:2.5rem;max-width:450px;width:100%;margin-bottom:3rem;border:1px solid #e4e4e7}
+        @media(prefers-color-scheme:dark){.waitlist-box{background:rgba(24,24,27,0.8);border-color:#27272a}}
+        .waitlist-box h2{margin-bottom:1rem;font-size:1.5em}
+        .waitlist-box p{margin-bottom:1.5rem;color:var(--secondary)}
+        form{display:flex;flex-direction:column;gap:1rem}
+        input[type="email"]{padding:1rem;border-radius:0.5rem;border:1px solid #e4e4e7;font-size:1em;background:var(--bg);color:var(--primary)}
+        @media(prefers-color-scheme:dark){input[type="email"]{border-color:#27272a;background:#09090b}}
+        button[type="submit"]{padding:1rem;background:var(--primary);color:white;border:none;border-radius:0.5rem;font-size:1em;font-weight:600;cursor:pointer;transition:all 0.2s}
+        button[type="submit"]:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.15)}
+        .success-message{display:none;background:rgba(0,255,0,0.2);padding:1rem;border-radius:0.5rem;margin-top:1rem;color:green}
+        
+        /* STATS */
+        .stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-bottom:4rem}
+        .stat-number{font-size:2.5rem;font-weight:700;color:var(--primary)}
+        .stat-label{font-size:0.875rem;color:var(--secondary)}
+        
+        /* NAV */
+        .nav{display:flex;justify-content:center;gap:1rem;margin:3rem 0;flex-wrap:wrap}
+        .nav-btn{padding:0.75rem 1.5rem;background:transparent;border:1px solid #e4e4e7;border-radius:9999px;color:var(--primary);cursor:pointer;transition:all 0.3s;font-size:0.9rem}
+        @media(prefers-color-scheme:dark){.nav-btn{border-color:#27272a}}
+        .nav-btn:hover,.nav-btn.active{background:var(--primary);color:white}
+        
+        /* SECTIONS */
+        .section{display:none;max-width:1000px;margin:0 auto;padding:0 2rem 3rem}
+        .section.active{display:block;animation:fadeIn 0.5s}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .section h2{text-align:center;margin-bottom:2rem;font-size:2rem}
+        
+        /* DEMOS */
+        .demo-card{background:var(--card);border:1px solid #e4e4e7;border-radius:1rem;padding:2rem;margin-bottom:2rem;backdrop-filter:blur(10px)}
+        @media(prefers-color-scheme:dark){.demo-card{background:rgba(24,24,27,0.8);border-color:#27272a}}
+        .upload-area{border:2px dashed #e4e4e7;border-radius:1rem;padding:3rem 2rem;text-align:center;cursor:pointer;transition:all 0.3s;margin:2rem 0}
+        @media(prefers-color-scheme:dark){.upload-area{border-color:#27272a}}
+        .upload-area:hover{border-color:var(--accent);background:rgba(255,107,107,0.05)}
+        .loader{display:none;text-align:center;padding:2rem}
+        .spinner{width:50px;height:50px;border:3px solid #e4e4e7;border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1rem}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .result-card{display:none;background:#f4f4f5;border-radius:1rem;padding:1.5rem;margin-top:1rem}
+        @media(prefers-color-scheme:dark){.result-card{background:#18181b}}
+        .result-item{display:flex;justify-content:space-between;padding:0.75rem 0;border-bottom:1px solid #e4e4e7}
+        @media(prefers-color-scheme:dark){.result-item{border-color:#27272a}}
+        .outfit-card{background:var(--card);border:1px solid #e4e4e7;border-radius:1rem;padding:1.5rem;margin-bottom:1rem;display:flex;gap:1rem;align-items:center}
+        @media(prefers-color-scheme:dark){.outfit-card{border-color:#27272a}}
+        .match-badge{display:inline-block;background:var(--accent);color:white;padding:0.25rem 0.75rem;border-radius:9999px;font-size:0.8rem;margin-top:0.5rem}
+        .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem;margin:1.5rem 0}
+        .option-btn{background:transparent;border:2px solid #e4e4e7;border-radius:0.75rem;padding:1rem;cursor:pointer;transition:all 0.3s;color:var(--primary);font-size:0.9rem}
+        @media(prefers-color-scheme:dark){.option-btn{border-color:#27272a}}
+        .option-btn:hover,.option-btn.selected{border-color:var(--accent);background:rgba(255,107,107,0.1)}
+        .progress-bar{background:#e4e4e7;height:8px;border-radius:4px;margin-bottom:2rem;overflow:hidden}
+        @media(prefers-color-scheme:dark){.progress-bar{background:#27272a}}
+        .progress-fill{background:var(--accent);height:100%;width:33%;transition:width 0.5s}
+        .quiz-step{display:none}
+        .quiz-step.active{display:block}
+        .result-showcase{display:none;text-align:center;padding:2rem}
+        .archetype-title{font-size:2rem;margin:1rem 0;background:linear-gradient(135deg,#ff6b6b,#feca57);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .color-palette{display:flex;justify-content:center;gap:1rem;margin:1.5rem 0;flex-wrap:wrap}
+        .color-swatch{width:50px;height:50px;border-radius:50%}
+        .badge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:1rem;margin-top:1.5rem}
+        .badge-item{text-align:center;padding:1rem;background:#f4f4f5;border-radius:0.75rem}
+        @media(prefers-color-scheme:dark){.badge-item{background:#18181b}}
+        .badge-item.unlocked{background:rgba(255,107,107,0.2)}
+        .badge-icon{font-size:2rem;margin-bottom:0.5rem;filter:grayscale(100%);opacity:0.5}
+        .badge-item.unlocked .badge-icon{filter:none;opacity:1}
+        
+        footer{text-align:center;padding:3rem 2rem;color:var(--secondary);border-top:1px solid #e4e4e7;margin-top:4rem}
+        @media(prefers-color-scheme:dark){footer{border-color:#27272a}}
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="badge">✨ Coming Soon</div>
+        <h1>Fashion meets<br><span class="gradient-text">intelligence</span></h1>
+        <p class="subtitle">WearX uses AI to curate modern clothing and accessories tailored to your style. Join the waitlist for early access to the future of fashion.</p>
+        
+        <div class="waitlist-box">
+            <h2>Join the Beta</h2>
+            <p>Be the first to experience AI-curated fashion</p>
+            <form id="waitlistForm" action="https://formspree.io/f/xeelzopo" method="POST">
+                <input type="email" name="email" placeholder="you@example.com" required>
+                <input type="hidden" name="_subject" value="New WearX Beta Signup">
+                <button type="submit">Join the Waitlist →</button>
+            </form>
+            <div class="success-message" id="successMsg">✅ You're on the list! We'll notify you when we launch.</div>
+        </div>
+        
+        <div class="stats">
+            <div><div class="stat-number">2,500+</div><div class="stat-label">Early adopters</div></div>
+            <div><div class="stat-number">50+</div><div class="stat-label">Countries</div></div>
+            <div><div class="stat-number">99.9%</div><div class="stat-label">Uptime</div></div>
+        </div>
+    </section>
+    
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <button class="nav-btn active" onclick="showSection('demos')">🎮 Try Demo</button>
+        <button class="nav-btn" onclick="showSection('wardrobe')">👔 Wardrobe</button>
+        <button class="nav-btn" onclick="showSection('outfits')">🎯 Outfits</button>
+        <button class="nav-btn" onclick="showSection('style-dna')">🧬 Style DNA</button>
+        <button class="nav-btn" onclick="showSection('gamification')">💰 Value</button>
+    </nav>
+    
+    <!-- DEMOS SECTION -->
+    <section id="demos" class="section active">
+        <h2>🎮 Experience WearX</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem">
+            <div class="demo-card" onclick="showSection('wardrobe')">
+                <div style="font-size:3em;margin-bottom:1rem">👔</div>
+                <h3>Wardrobe</h3>
+                <p style="color:var(--secondary)">Upload photos and let AI analyze your clothes. See category, color, pattern & price estimates.</p>
+                <button style="margin-top:1rem;padding:0.75rem 1.5rem;background:var(--primary);color:white;border:none;border-radius:0.5rem;cursor:pointer">Try Demo →</button>
+            </div>
+            
+            <div class="demo-card" onclick="showSection('outfits')">
+                <div style="font-size:3em;margin-bottom:1rem">🎯</div>
+                <h3>Outfits</h3>
+                <p style="color:var(--secondary)">Get AI-powered outfit recommendations based on weather, occasion, and your personal style.</p>
+                <button style="margin-top:1rem;padding:0.75rem 1.5rem;background:var(--primary);color:white;border:none;border-radius:0.5rem;cursor:pointer">Try Demo →</button>
+            </div>
+            
+            <div class="demo-card" onclick="showSection('style-dna')">
+                <div style="font-size:3em;margin-bottom:1rem">🧬</div>
+                <h3>Style DNA</h3>
+                <p style="color:var(--secondary)">Take our quiz to discover your style archetype and get a personalized color palette.</p>
+                <button style="margin-top:1rem;padding:0.75rem 1.5rem;background:var(--primary);color:white;border:none;border-radius:0.5rem;cursor:pointer">Try Demo →</button>
+            </div>
+            
+            <div class="demo-card" onclick="showSection('gamification')">
+                <div style="font-size:3em;margin-bottom:1rem">💰</div>
+                <h3>Value Tracker</h3>
+                <p style="color:var(--secondary)">Track cost-per-wear, unlock achievement badges, and build a sustainable wardrobe.</p>
+                <button style="margin-top:1rem;padding:0.75rem 1.5rem;background:var(--primary);color:white;border:none;border-radius:0.5rem;cursor:pointer">Try Demo →</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- WARDROBE DEMO -->
+    <section id="wardrobe" class="section">
+        <h2>👔 Wardrobe Demo</h2>
+        <div class="demo-card">
+            <div class="upload-area" id="uploadArea" onclick="simulateUpload()">
+                <div style="font-size:4em;margin-bottom:1rem">📸</div>
+                <h3>Drop your photo here</h3>
+                <p style="color:var(--secondary)">or click to browse</p>
+            </div>
+            
+            <div class="loader" id="loader">
+                <div class="spinner"></div>
+                <h3>AI analyzing...⏳</h3>
+                <p style="color:var(--secondary)">Identifying item, color, pattern & more</p>
+            </div>
+            
+            <div class="result-card" id="resultCard">
+                <h3>✨ Analysis Complete!</h3>
+                <div class="result-item"><span>Item</span><strong>Blue Cotton Shirt</strong></div>
+                <div class="result-item"><span>Category</span><strong>Tops</strong></div>
+                <div class="result-item"><span>Color</span><strong>Navy Blue</strong></div>
+                <div class="result-item"><span>Pattern</span><strong>Solid</strong></div>
+                <div class="result-item"><span>Est. Price</span><strong>$45</strong></div>
+                <button onclick="resetWardrobe()" style="margin-top:1rem;width:100%;padding:0.75rem;background:var(--accent);color:white;border:none;border-radius:0.5rem;cursor:pointer">Analyze Another Item</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- OUTFITS DEMO -->
+    <section id="outfits" class="section">
+        <h2>🎯 Outfit Recommendations</h2>
+        
+        <div class="demo-card">
+            <div style="background:#f4f4f5;border-radius:1rem;padding:1.5rem;text-align:center;margin-bottom:1.5rem">
+                <div style="font-size:3em;margin-bottom:0.5rem">☀️</div>
+                <h3>24°C Sunny</h3>
+                <p style="color:var(--secondary)">Perfect weather for light layers</p>
+            </div>
+            
+            <div class="outfit-card">
+                <div style="width:80px;height:80px;background:rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:2em">👕</div>
+                <div style="flex:1">
+                    <h4>Casual Comfort</h4>
+                    <p style="color:var(--secondary);font-size:0.9rem">Blue shirt + Khaki pants</p>
+                    <span class="match-badge">85% Match</span>
+                </div>
+            </div>
+            
+            <div class="outfit-card">
+                <div style="width:80px;height:80px;background:rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:2em">👔</div>
+                <div style="flex:1">
+                    <h4>Smart Casual</h4>
+                    <p style="color:var(--secondary);font-size:0.9rem">White tee + Jeans + Jacket</p>
+                    <span class="match-badge">92% Match</span>
+                </div>
+            </div>
+            
+            <div class="outfit-card">
+                <div style="width:80px;height:80px;background:rgba(255,255,255,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:2em">🤵</div>
+                <div style="flex:1">
+                    <h4>Business Ready</h4>
+                    <p style="color:var(--secondary);font-size:0.9rem">Black shirt + Gray trousers</p>
+                    <span class="match-badge">78% Match</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- STYLE DNA DEMO -->
+    <section id="style-dna" class="section">
+        <h2>🧬 Style DNA Quiz</h2>
+        
+        <div class="demo-card">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            
+            <div class="quiz-step active" id="step1">
+                <h3>Step 1: What's your body type?</h3>
+                <div class="options">
+                    <button class="option-btn" onclick="selectOption(1,this)">Hourglass</button>
+                    <button class="option-btn" onclick="selectOption(1,this)">Pear</button>
+                    <button class="option-btn" onclick="selectOption(1,this)">Apple</button>
+                    <button class="option-btn" onclick="selectOption(1,this)">Rectangle</button>
+                </div>
+            </div>
+            
+            <div class="quiz-step" id="step2">
+                <h3>Step 2: What's your skin tone?</h3>
+                <div class="options">
+                    <button class="option-btn" onclick="selectOption(2,this)">Fair</button>
+                    <button class="option-btn" onclick="selectOption(2,this)">Light</button>
+                    <button class="option-btn" onclick="selectOption(2,this)">Medium</button>
+                    <button class="option-btn" onclick="selectOption(2,this)">Deep</button>
+                </div>
+            </div>
+            
+            <div class="quiz-step" id="step3">
+                <h3>Step 3: Pick your style</h3>
+                <div class="options">
+                    <button class="option-btn" onclick="selectOption(3,this)">Minimalist</button>
+                    <button class="option-btn" onclick="selectOption(3,this)">Bohemian</button>
+                    <button class="option-btn" onclick="selectOption(3,this)">Classic</button>
+                    <button class="option-btn" onclick="selectOption(3,this)">Streetwear</button>
+                </div>
+            </div>
+            
+            <div class="result-showcase" id="quizResult">
+                <h3>Your Style Archetype:</h3>
+                <div class="archetype-title">Urban Minimalist</div>
+                <p style="color:var(--secondary);max-width:500px;margin:0 auto">You prefer clean lines, neutral colors, and versatile pieces that work together effortlessly.</p>
+                <div class="color-palette">
+                    <div class="color-swatch" style="background:#2c3e50"></div>
+                    <div class="color-swatch" style="background:#ecf0f1"></div>
+                    <div class="color-swatch" style="background:#95a5a6"></div>
+                    <div class="color-swatch" style="background:#34495e"></div>
+                </div>
+                <button onclick="resetQuiz()" style="padding:0.75rem 2rem;background:var(--accent);color:white;border:none;border-radius:9999px;cursor:pointer">Retake Quiz ↺</button>
+            </div>
+            
+            <div style="display:flex;justify-content:space-between;margin-top:2rem" id="quizNav">
+                <button onclick="prevStep()" style="padding:0.75rem 1.5rem;background:transparent;border:1px solid #e4e4e7;border-radius:0.5rem;color:var(--primary);cursor:pointer">← Back</button>
+                <button onclick="nextStep()" style="padding:0.75rem 1.5rem;background:var(--primary);color:white;border:none;border-radius:0.5rem;cursor:pointer">Next →</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- GAMIFICATION DEMO -->
+    <section id="gamification" class="section">
+        <h2>💰 Value Tracker</h2>
+        
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem">
+            <div style="background:#f4f4f5;border-radius:1rem;padding:1.5rem;text-align:center">
+                <div style="font-size:2.5em;font-weight:bold;color:var(--accent)">$2,450</div>
+                <div style="color:var(--secondary)">Wardrobe Value</div>
+            </div>
+            
+            <div style="background:#f4f4f5;border-radius:1rem;padding:1.5rem;text-align:center">
+                <div style="font-size:2.5em;font-weight:bold;color:var(--accent)">$12.50</div>
+                <div style="color:var(--secondary)">Avg Cost/Wear</div>
+            </div>
+            
+            <div style="background:#f4f4f5;border-radius:1rem;padding:1.5rem;text-align:center">
+                <div style="font-size:2.5em;font-weight:bold;color:var(--accent)">34</div>
+                <div style="color:var(--secondary)">Total Items</div>
+            </div>
+            
+            <div style="background:#f4f4f5;border-radius:1rem;padding:1.5rem;text-align:center">
+                <div style="font-size:2.5em;font-weight:bold;color:var(--accent)">70</div>
+                <div style="color:var(--secondary)">Sustainability</div>
+            </div>
+        </div>
+        
+        <div class="demo-card">
+            <h3>🏆 Your Badges</h3>
+            
+            <div class="badge-grid">
+                <div class="badge-item unlocked">
+                    <div class="badge-icon">📸</div>
+                    <div style="font-size:0.8rem">Photographer</div>
+                </div>
+                
+                <div class="badge-item unlocked">
+                    <div class="badge-icon">🌱</div>
+                    <div style="font-size:0.8rem">Eco Warrior</div>
+                </div>
+                
+                <div class="badge-item unlocked">
+                    <div class="badge-icon">💡</div>
+                    <div style="font-size:0.8rem">Style Icon</div>
+                </div>
+                
+                <div class="badge-item unlocked">
+                    <div class="badge-icon">⭐</div>
+                    <div style="font-size:0.8rem">First Steps</div>
+                </div>
+                
+                <div class="badge-item">
+                    <div class="badge-icon">👑</div>
+                    <div style="font-size:0.8rem">Fashion King</div>
+                </div>
+                
+                <div class="badge-item">
+                    <div class="badge-icon">💎</div>
+                    <div style="font-size:0.8rem">Collector</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>© 2026 WearX. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Navigation
+        function showSection(sectionId){
+            document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+            gtag('event','view_section',{section:sectionId});
+        }
+        
+        // Waitlist Form
+        document.getElementById('waitlistForm').addEventListener('submit',function(e){
+            e.preventDefault();
+            fetch(this.action,{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}})
+            .then(()=>{
+                this.style.display='none';
+                document.getElementById('successMsg').style.display='block';
+                gtag('event','waitlist_signup');
+            });
+        });
+        
+        // Wardrobe
+        function simulateUpload(){
+            document.getElementById('uploadArea').style.display='none';
+            document.getElementById('loader').style.display='block';
+            setTimeout(()=>{
+                document.getElementById('loader').style.display='none';
+                document.getElementById('resultCard').style.display='block';
+                gtag('event','wardrobe_upload');
+            },2000);
+        }
+        function resetWardrobe(){
+            document.getElementById('resultCard').style.display='none';
+            document.getElementById('uploadArea').style.display='block';
+        }
+        
+        // Quiz
+        let currentStep=1;
+        function selectOption(step,btn){
+            document.querySelectorAll('#step'+step+' .option-btn').forEach(b=>b.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+        function nextStep(){
+            if(currentStep<3){
+                document.getElementById('step'+currentStep).classList.remove('active');
+                currentStep++;
+                document.getElementById('step'+currentStep).classList.add('active');
+                document.getElementById('progressFill').style.width=(currentStep*33)+'%';
+            }else{
+                document.getElementById('step3').style.display='none';
+                document.getElementById('quizNav').style.display='none';
+                document.getElementById('progressFill').style.width='100%';
+                document.getElementById('quizResult').style.display='block';
+                gtag('event','quiz_complete');
+            }
+        }
+        function prevStep(){
+            if(currentStep>1){
+                document.getElementById('step'+currentStep).classList.remove('active');
+                currentStep--;
+                document.getElementById('step'+currentStep).classList.add('active');
+                document.getElementById('progressFill').style.width=(currentStep*33)+'%';
+            }
+        }
+        function resetQuiz(){
+            currentStep=1;
+            document.querySelectorAll('.quiz-step').forEach(s=>s.classList.remove('active'));
+            document.getElementById('step1').classList.add('active');
+            document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));
+            document.getElementById('quizResult').style.display='none';
+            document.getElementById('quizNav').style.display='flex';
+            document.getElementById('step3').style.display='block';
+            document.getElementById('progressFill').style.width='33%';
+        }
+    </script>
+</body>
+</html>
