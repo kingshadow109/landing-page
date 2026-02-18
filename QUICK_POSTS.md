@@ -21,7 +21,7 @@ I've been working on WearX - an AI-powered fashion app that helps you:
 
 Looking for beta testers who want to stop wardrobe decision fatigue!
 
-🔗 [Join the waitlist](https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app)
+🔗 [Join the waitlist](https://symphonious-capybara-0c525d.netlify.app)
 
 Would love your feedback!
 
@@ -48,7 +48,7 @@ Built an AI fashion assistant and looking for early testers.
 
 **What's free:** Everything during beta
 
-[Sign up here](https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app)
+[Sign up here](https://symphonious-capybara-0c525d.netlify.app)
 
 Questions welcome!
 
@@ -75,7 +75,7 @@ Long-time lurker, first-time poster. I built something I think this community mi
 
 Looking for guys who want to test it and help me improve it.
 
-[Check it out](https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app)
+[Check it out](https://symphonious-capybara-0c525d.netlify.app)
 
 Would love feedback from this community specifically!
 
@@ -97,7 +97,7 @@ Would love feedback from this community specifically!
 
 **Tweet 5:** Looking for beta testers! Join the waitlist 👇
 
-https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app
+https://symphonious-capybara-0c525d.netlify.app
 
 **Tweet 6:** Built with Next.js + Gemini AI. Would love your feedback!
 

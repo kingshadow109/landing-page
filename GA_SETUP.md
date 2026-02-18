@@ -14,7 +14,7 @@
 1. In GA4, go to **Admin** (gear icon)
 2. Click **"Data Streams"**
 3. Click **"Web"**
-4. Enter your URL: `https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app`
+4. Enter your URL: `https://symphonious-capybara-0c525d.netlify.app`
 5. Stream name: `WearX Website`
 6. Click **"Create"**
 7. Copy the **Measurement ID** (looks like `G-XXXXXXXXXX`)

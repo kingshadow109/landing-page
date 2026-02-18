@@ -48,7 +48,7 @@ Open your new Netlify URL and test:
 **Update posting schedule:**
 Replace all instances of:
 ```
-https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app
+https://symphonious-capybara-0c525d.netlify.app
 ```
 
 With your new Netlify URL in:

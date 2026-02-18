@@ -11,7 +11,7 @@
 - [ ] Mobile responsive design
 - [ ] Dark mode toggle works
 
-**Test URL:** https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app/
+**Test URL:** https://symphonious-capybara-0c525d.netlify.app/
 
 ---
 
@@ -26,7 +26,7 @@
 - [ ] Results display correctly
 - [ ] Multiple images can be uploaded
 
-**Test URL:** https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app/wardrobe
+**Test URL:** https://symphonious-capybara-0c525d.netlify.app/wardrobe
 
 ---
 
@@ -41,7 +41,7 @@
 - [ ] Reasoning text makes sense
 - [ ] Multiple outfit options shown
 
-**Test URL:** https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app/outfits
+**Test URL:** https://symphonious-capybara-0c525d.netlify.app/outfits
 
 ---
 

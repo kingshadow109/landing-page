@@ -30,7 +30,7 @@ Tech stack: Next.js 14, Gemini AI, Tailwind
 
 Looking for beta testers who want to stop wardrobe decision fatigue!
 
-🔗 https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app
+🔗 https://symphonious-capybara-0c525d.netlify.app
 
 Would love your feedback!
 ```
@@ -51,7 +51,7 @@ Tweet 4: Features:
 
 Tweet 5: Looking for beta testers! Join the waitlist 👇
 
-https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app
+https://symphonious-capybara-0c525d.netlify.app
 
 Tweet 6: Built with Next.js + Gemini AI. Would love your feedback!
 
@@ -83,7 +83,7 @@ Looking for: Beta testers who want to try it and give honest feedback
 
 What's free: Everything during beta
 
-[Sign up here] https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app
+[Sign up here] https://symphonious-capybara-0c525d.netlify.app
 
 Questions welcome!
 ```
@@ -124,7 +124,7 @@ For the data nerds: Tracks wears, cost-per-wear, style categories
 
 Looking for guys who want to test it and help me improve it.
 
-[Check it out] https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app
+[Check it out] https://symphonious-capybara-0c525d.netlify.app
 
 Would love feedback from this community specifically!
 ```
@@ -168,7 +168,7 @@ The AI suggests combinations I'd never think of - like pairing that skirt I forg
 
 Looking for beta testers who want to try it!
 
-[Join here] https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app
+[Join here] https://symphonious-capybara-0c525d.netlify.app
 
 Would especially love feedback on the outfit suggestions!
 ```
@@ -222,7 +222,7 @@ Challenges I'm facing:
 
 Would love advice from anyone who's launched a consumer app.
 
-[Check it out] https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app
+[Check it out] https://symphonious-capybara-0c525d.netlify.app
 
 What would you do differently in your first launch?
 ```
@@ -268,7 +268,7 @@ Tweet 5: Week 2 goals:
 • First 10 paying users
 • Product Hunt launch prep
 
-Join us: https://landing-page-jwvfgocm6-ifthicarrs-projects.vercel.app
+Join us: https://symphonious-capybara-0c525d.netlify.app
 
 #buildinpublic
 ```
