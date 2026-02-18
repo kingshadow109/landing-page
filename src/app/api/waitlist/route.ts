@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       // If no API key, just log and return success (for testing)
       console.log("Waitlist signup (no Loops API key):", email);
       return NextResponse.json(
-        { success: true, message: "Added to waitlist" },
+        { success: true, message: "Added to waitlist", email: email },
         { status: 200 }
       );
     }
