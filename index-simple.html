@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WearX - AI Fashion Stylist</title>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FSP1DKFFWV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FSP1DKFFWV');
+    </script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .tagline {
+            font-size: 1.5em;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        .waitlist-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            margin: 0 auto 60px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .waitlist-box h2 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        .waitlist-box p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input[type="email"] {
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: none;
+            font-size: 1em;
+            background: rgba(255,255,255,0.9);
+        }
+        button {
+            padding: 15px 30px;
+            border-radius: 10px;
+            border: none;
+            background: #ff6b6b;
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        .success-message {
+            display: none;
+            background: rgba(0,255,0,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        .feature {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        .feature h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            opacity: 0.7;
+        }
+        .links {
+            margin-top: 30px;
+        }
+        .links a {
+            color: white;
+            text-decoration: underline;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👗 WearX</h1>
+            <p class="tagline">Your AI-Powered Fashion Stylist</p>
+        </header>
+        
+        <div class="waitlist-box">
+            <h2>Join the Beta</h2>
+            <p>Be the first to experience AI-curated fashion. Get personalized outfit recommendations from your own wardrobe.</p>
+            
+            <form id="waitlistForm">
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <button type="submit">Join the Waitlist</button>
+            </form>
+            
+            <div class="success-message" id="successMessage">
+                ✅ You're on the list! We'll notify you when we launch.
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📸</div>
+                <h3>Digitize Your Wardrobe</h3>
+                <p>Upload photos of your clothes. AI categorizes everything automatically.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <h3>AI Outfit Suggestions</h3>
+                <p>Get personalized outfit recommendations based on what you own.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🌤️</div>
+                <h3>Weather-Aware</h3>
+                <p>Never dress inappropriately for the weather again.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Track Value</h3>
+                <p>See cost-per-wear for each piece. Build a smarter wardrobe.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2026 WearX. All rights reserved.</p>
+            <div class="links">
+                <a href="https://github.com/kingshadow109/landing-page">GitHub</a>
+                <a href="mailto:hello@wearx.app">Contact</a>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            
+            // Store in localStorage (simple solution)
+            let waitlist = JSON.parse(localStorage.getItem('waitlist') || '[]');
+            waitlist.push({
+                email: email,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('waitlist', JSON.stringify(waitlist));
+            
+            // Show success
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('waitlistForm').style.display = 'none';
+            
+            // Track in GA
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'waitlist_signup', {
+                    'event_category': 'engagement',
+                    'event_label': 'beta_waitlist'
+                });
+            }
+            
+            console.log('Waitlist signup:', email);
+        });
+    </script>
+</body>
+</html>
