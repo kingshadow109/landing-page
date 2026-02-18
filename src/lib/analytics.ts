@@ -1,13 +1,27 @@
 // Google Analytics 4 configuration for WearX
-// Using @next/third-parties/google (official Next.js solution)
+// Tracking ID: G-FSP1DKFFWV
 
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-FSP1DKFFWV';
 
+// Type declarations for gtag - must match any other declarations in the project
+declare global {
+  interface Window {
+    gtag?: (
+      command: string,
+      targetId: string,
+      config?: Record<string, unknown>
+    ) => void;
+    dataLayer?: unknown[];
+  }
+}
+
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: string) => {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('config', GA_TRACKING_ID, {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('config', GA_TRACKING_ID, {
       page_path: url,
+      page_title: document.title,
+      page_location: window.location.href,
     });
   }
 };
@@ -24,8 +38,8 @@ export const event = ({
   label?: string;
   value?: number;
 }) => {
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', action, {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', action, {
       event_category: category,
       event_label: label,
       value: value,
@@ -89,4 +103,22 @@ export const trackCTAClick = (location: string) => {
     category: 'navigation',
     label: location,
   });
+};
+
+// Check if GA is loaded
+export const isGALoaded = (): boolean => {
+  return typeof window !== 'undefined' && 
+         typeof window.gtag === 'function' &&
+         typeof window.dataLayer !== 'undefined';
+};
+
+// Get GA debug info
+export const getGADebugInfo = () => {
+  if (typeof window === 'undefined') return null;
+  return {
+    hasGtag: typeof window.gtag === 'function',
+    hasDataLayer: typeof window.dataLayer !== 'undefined',
+    dataLayerLength: window.dataLayer?.length || 0,
+    trackingId: GA_TRACKING_ID,
+  };
 };

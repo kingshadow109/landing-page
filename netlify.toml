@@ -3,13 +3,13 @@
 ## Build Settings
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
   NEXT_PUBLIC_GA_ID = "G-FSP1DKFFWV"
 
-## Redirects
+## Redirects - SPA support
 [[redirects]]
   from = "/*"
   to = "/index.html"

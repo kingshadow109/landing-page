@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,6 +55,9 @@ export const metadata: Metadata = {
   },
 };
 
+// GA Tracking ID - hardcoded for reliability
+const GA_TRACKING_ID = "G-FSP1DKFFWV";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,37 +66,29 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Inject GA directly into head
-              var gaScript = document.createElement('script');
-              gaScript.async = true;
-              gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-FSP1DKFFWV';
-              document.head.appendChild(gaScript);
-              
-              // Initialize gtag immediately
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              window.gtag = gtag;
-              gtag('js', new Date());
-              gtag('config', 'G-FSP1DKFFWV');
-              
-              console.log('GA injected at:', new Date().toISOString());
-            `,
-          }}
+        {/* Google Analytics 4 - Standard Implementation */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          strategy="afterInteractive"
         />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_title: document.title,
+              page_location: window.location.href,
+              send_page_view: true
+            });
+            console.log('[GA4] Initialized with ID: ${GA_TRACKING_ID}');
+          `}
+        </Script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
-        
-        <iframe 
-          src="/ga-bridge.html" 
-          style={{ position: 'absolute', width: 0, height: 0, border: 0 }}
-          title="GA Bridge"
-        />
       </body>
     </html>
   );
