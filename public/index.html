@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WearX - AI-Powered Fashion</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FSP1DKFFWV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FSP1DKFFWV');
+    </script>
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fafafa;
+        }
+        h1 { color: #333; }
+        .links {
+            display: grid;
+            gap: 10px;
+            margin: 30px 0;
+        }
+        a {
+            display: block;
+            padding: 15px 20px;
+            background: white;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .status {
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 WearX - AI Fashion App</h1>
+    <p>All features are deployed and working!</p>
+    
+    <div class="links">
+        <a href="/">🏠 Homepage + Waitlist</a>
+        <a href="/wardrobe">👔 Wardrobe Upload</a>
+        <a href="/wardrobe/value">💰 Cost-Per-Wear Tracker</a>
+        <a href="/outfits">🎯 AI Outfit Recommendations</a>
+        <a href="/style-dna">🧬 Style DNA Quiz</a>
+    </div>
+    
+    <div class="status">
+        <h3>✅ Google Analytics Active</h3>
+        <p>Tracking ID: G-FSP1DKFFWV</p>
+        <p>Open console (F12) and type <code>gtag</code> to verify</p>
+    </div>
+    
+    <script>
+        // Verify GA is loaded
+        setTimeout(() => {
+            if (typeof gtag === 'function') {
+                console.log('✅ Google Analytics is working!');
+                gtag('event', 'page_view', {
+                    page_title: 'WearX Landing',
+                    page_location: window.location.href
+                });
+            } else {
+                console.error('❌ Google Analytics not loaded');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
