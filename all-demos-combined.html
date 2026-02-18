@@ -1,0 +1,3498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WearX Demo - Experience the Future of Fashion</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FSP1DKFFWV"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FSP1DKFFWV');</script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#667eea0%,#764ba2100%);min-height:100vh;color:white;padding:40px20px}
+        .container{max-width:1200px;margin:0auto}
+        header{text-align:center;margin-bottom:60px}
+        h1{font-size:3.5em;margin-bottom:10px}
+        .subtitle{font-size:1.3em;opacity:0.9;margin-bottom:30px}
+        .back-link{display:inline-block;padding:12px24px;background:rgba(255,255,255,0.1);border-radius:30px;text-decoration:none;color:white;margin-bottom:20px;transition:all0.3s}
+        .back-link:hover{background:rgba(255,255,255,0.2)}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-bottom:40px}
+        .card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border-radius:20px;padding:40px30px;text-align:center;transition:all0.3s;border:1pxsolidrgba(255,255,255,0.2);text-decoration:none;color:white}
+        .card:hover{transform:translateY(-10px);background:rgba(255,255,255,0.15);box-shadow:025px50pxrgba(0,0,0,0.3)}
+        .icon{font-size:4em;margin-bottom:20px}
+        .card h2{font-size:1.8em;margin-bottom:15px}
+        .card p{opacity:0.9;line-height:1.6}
+        .cta{text-align:center;margin-top:40px;padding:40px;background:rgba(255,255,255,0.1);border-radius:20px}
+        .cta h2{font-size:2.5em;margin-bottom:20px}
+        .cta-button{display:inline-block;padding:18px40px;background:#ff6b6b;color:white;text-decoration:none;border-radius:30px;font-size:1.2em;font-weight:bold;transition:all0.3s;margin-top:20px}
+        .cta-button:hover{transform:scale(1.05);box-shadow:010px30pxrgba(255,107,107,0.4)}
+        footer{text-align:center;margin-top:60px;opacity:0.7}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="https://splendorous-froyo-72f003.netlify.app/" class="back-link">← Back to Main Site</a>
+            <h1>🚀 WearX Demo</h1>
+            <p class="subtitle">Experience the future of AI-powered fashion</p>
+        </header>
+        
+        <div class="grid">
+            <a href="wardrobe-demo.html" class="card">
+                <div class="icon">👔</div>
+                <h2>Wardrobe</h2>
+                <p>Upload photos and let AI analyze your clothes. See category, color, pattern & price estimates.</p>
+            </a>
+            
+            <a href="outfits-demo.html" class="card">
+                <div class="icon">🎯</div>
+                <h2>Outfits</h2>
+                <p>Get AI-powered outfit recommendations based on weather, occasion, and your style.</p>
+            </a>
+            
+            <a href="style-dna-demo.html" class="card">
+                <div class="icon">🧬</div>
+                <h2>Style DNA</h2>
+                <p>Take our 5-step quiz to discover your style archetype and personalized color palette.</p>
+            </a>
+            
+            <a href="value-demo.html" class="card">
+                <div class="icon">💰</div>
+                <h2>Value Tracker</h2>
+                <p>Track cost-per-wear, unlock badges, and build a sustainable wardrobe.</p>
+            </a>
+        </div>
+        
+        <div class="cta">
+            <h2>Ready to try the real thing?</h2>
+            <p>Join our beta and get early access to all features.</p>
+            <a href="https://splendorous-froyo-72f003.netlify.app/" class="cta-button">Join the Beta →</a>
+        </div>
+        
+        <footer>
+            <p>© 2026 WearX. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardrobe Demo - WearX</title>
+    <meta name="description" content="Experience WearX AI-powered wardrobe management. Digitize your closet and organize your fashion.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #18181b;
+            --card: #ffffff;
+            --card-foreground: #18181b;
+            --primary: #18181b;
+            --primary-foreground: #fafafa;
+            --secondary: #f4f4f5;
+            --secondary-foreground: #18181b;
+            --muted: #f4f4f5;
+            --muted-foreground: #71717a;
+            --accent: #f4f4f5;
+            --accent-foreground: #18181b;
+            --border: #e4e4e7;
+            --input: #e4e4e7;
+            --ring: #a1a1aa;
+            --radius: 0.625rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+        
+        @media (min-width: 640px) {
+            .navbar-container {
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .navbar-container {
+                padding: 0 2rem;
+            }
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        
+        .nav-logo:hover {
+            opacity: 0.8;
+        }
+        
+        .nav-logo-icon {
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--primary-foreground);
+        }
+        
+        .nav-logo-text {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--foreground);
+        }
+        
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+        
+        .nav-link {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--foreground);
+            background: var(--secondary);
+        }
+        
+        .nav-link.active {
+            color: var(--foreground);
+            background: var(--secondary);
+        }
+        
+        .nav-cta {
+            display: none;
+            padding: 0.5rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary-foreground);
+            background: var(--primary);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-cta {
+                display: inline-flex;
+            }
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--secondary);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        .mobile-menu-btn:hover {
+            background: var(--border);
+        }
+        
+        .mobile-menu-btn svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: var(--foreground);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 4rem;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            z-index: 999;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--foreground);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+        }
+        
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+            background: var(--secondary);
+        }
+        
+        .mobile-nav-cta {
+            display: block;
+            margin-top: 0.5rem;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-foreground);
+            background: var(--primary);
+            text-align: center;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+        }
+        
+        .mobile-nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* ===== DEMO CONTENT ===== */
+        .demo-page {
+            padding-top: 4rem;
+            min-height: 100vh;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        @media (min-width: 640px) {
+            .demo-header {
+                padding: 4rem 1.5rem;
+            }
+        }
+        
+        .demo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+        
+        .demo-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 0.75rem;
+        }
+        
+        @media (min-width: 640px) {
+            .demo-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .demo-subtitle {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .demo-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .demo-container {
+                padding: 3rem 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .demo-container {
+                padding: 3rem 2rem;
+            }
+        }
+        
+        /* Wardrobe Demo Specific Styles */
+        .upload-zone {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--secondary);
+            transition: all 0.2s;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+        
+        .upload-zone:hover {
+            border-color: var(--ring);
+            background: var(--accent);
+        }
+        
+        .upload-zone.dragover {
+            border-color: var(--primary);
+            background: rgba(24, 24, 27, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .upload-text {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+        }
+        
+        .upload-hint {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+        
+        .wardrobe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .wardrobe-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        
+        .wardrobe-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .wardrobe-item-image {
+            aspect-ratio: 1;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        
+        .wardrobe-item-info {
+            padding: 0.75rem;
+        }
+        
+        .wardrobe-item-category {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .wardrobe-item-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-top: 0.25rem;
+        }
+        
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            border-color: var(--primary);
+        }
+        
+        /* Navigation between demos */
+        .demo-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .demo-nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--foreground);
+            background: var(--secondary);
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .demo-nav-link:hover {
+            background: var(--border);
+        }
+        
+        .demo-nav-link svg {
+            width: 1rem;
+            height: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .cta-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-foreground);
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--background);
+            border-top: 1px solid var(--border);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-text {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+        
+        .page-transition {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="page-transition">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="demo-index.html" class="nav-logo">
+                <div class="nav-logo-icon">W</div>
+                <span class="nav-logo-text">WearX</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="demo-index.html" class="nav-link">Home</a>
+                <a href="wardrobe-demo.html" class="nav-link active">Wardrobe</a>
+                <a href="outfit-demo.html" class="nav-link">Outfits</a>
+                <a href="style-dna-demo.html" class="nav-link">Style DNA</a>
+                <a href="value-tracker-demo.html" class="nav-link">Value Tracker</a>
+            </div>
+            
+            <a href="../index.html#waitlist" class="nav-cta">Join Beta</a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="closeIcon" style="display: none;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="demo-index.html" class="mobile-nav-link">Home</a>
+        <a href="wardrobe-demo.html" class="mobile-nav-link active">Wardrobe</a>
+        <a href="outfit-demo.html" class="mobile-nav-link">Outfits</a>
+        <a href="style-dna-demo.html" class="mobile-nav-link">Style DNA</a>
+        <a href="value-tracker-demo.html" class="mobile-nav-link">Value Tracker</a>
+        <a href="../index.html#waitlist" class="mobile-nav-cta">Join Beta</a>
+    </div>
+    
+    <!-- Demo Page Content -->
+    <div class="demo-page">
+        <header class="demo-header">
+            <div class="demo-badge">👕 Wardrobe Demo</div>
+            <h1 class="demo-title">Your Digital Closet</h1>
+            <p class="demo-subtitle">Upload photos of your clothes and let AI automatically categorize and organize your entire wardrobe.</p>
+        </header>
+        
+        <div class="demo-container">
+            <!-- Upload Zone -->
+            <div class="upload-zone" id="uploadZone">
+                <div class="upload-icon">📸</div>
+                <div class="upload-text">Drop photos here or click to upload</div>
+                <div class="upload-hint">Supports JPG, PNG • AI will auto-categorize your items</div>
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="category-filter">
+                <button class="category-btn active" data-category="all">All Items</button>
+                <button class="category-btn" data-category="tops">Tops</button>
+                <button class="category-btn" data-category="bottoms">Bottoms</button>
+                <button class="category-btn" data-category="shoes">Shoes</button>
+                <button class="category-btn" data-category="accessories">Accessories</button>
+            </div>
+            
+            <!-- Wardrobe Grid -->
+            <div class="wardrobe-grid" id="wardrobeGrid">
+                <div class="wardrobe-item" data-category="tops">
+                    <div class="wardrobe-item-image">👔</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Top</div>
+                        <div class="wardrobe-item-name">White Dress Shirt</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-item" data-category="bottoms">
+                    <div class="wardrobe-item-image">👖</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Bottom</div>
+                        <div class="wardrobe-item-name">Blue Jeans</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-item" data-category="shoes">
+                    <div class="wardrobe-item-image">👟</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Shoes</div>
+                        <div class="wardrobe-item-name">White Sneakers</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-item" data-category="tops">
+                    <div class="wardrobe-item-image">🧥</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Top</div>
+                        <div class="wardrobe-item-name">Denim Jacket</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-item" data-category="accessories">
+                    <div class="wardrobe-item-image">⌚</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Accessory</div>
+                        <div class="wardrobe-item-name">Leather Watch</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-item" data-category="bottoms">
+                    <div class="wardrobe-item-image">🩳</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Bottom</div>
+                        <div class="wardrobe-item-name">Khaki Shorts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation between demos -->
+        <div class="demo-nav">
+            <a href="demo-index.html" class="demo-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to Demos
+            </a>
+            <a href="outfit-demo.html" class="demo-nav-link">
+                Next: Outfits
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Ready to digitize your wardrobe?</h2>
+            <p class="cta-text">Join thousands of users who have transformed their fashion experience with WearX.</p>
+            <a href="../index.html#waitlist" class="cta-button">Try Beta Free →</a>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">© 2025 WearX. All rights reserved. <a href="demo-index.html" style="color: inherit;">Back to Demos</a></p>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const isOpen = mobileMenu.classList.contains('open');
+            menuIcon.style.display = isOpen ? 'none' : 'block';
+            closeIcon.style.display = isOpen ? 'block' : 'none';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            });
+        });
+        
+        // Category Filter
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const wardrobeItems = document.querySelectorAll('.wardrobe-item');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Filter items
+                const category = btn.dataset.category;
+                wardrobeItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Upload Zone Interaction
+        const uploadZone = document.getElementById('uploadZone');
+        
+        uploadZone.addEventListener('click', () => {
+            alert('In the full app, this would open your camera roll to upload items!');
+        });
+        
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+        
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+        
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            alert('In the full app, your items would be uploaded and AI-categorized!');
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Outfit Recommendations</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16213e;
+            --bg-card-hover: #1e2a4a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --accent-primary: #e94560;
+            --accent-secondary: #0f3460;
+            --accent-glow: rgba(233, 69, 96, 0.3);
+            --border-color: #2a2a4a;
+            --success: #00d9ff;
+            --warning: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            min-height: 100vh;
+            color: var(--text-primary);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Weather Widget */
+        .weather-widget {
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.8) 0%, rgba(233, 69, 96, 0.2) 100%);
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .weather-icon {
+            font-size: 3rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .weather-info {
+            text-align: left;
+        }
+
+        .weather-temp {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, var(--success) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .weather-condition {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Outfit Grid */
+        .outfit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Outfit Card */
+        .outfit-card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .outfit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--success));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .outfit-card:hover {
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            box-shadow: 0 20px 60px rgba(233, 69, 96, 0.2), 0 0 40px var(--accent-glow);
+        }
+
+        .outfit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .outfit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .outfit-style {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .style-casual {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .style-smart {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .style-formal {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .match-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .match-percentage {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--success);
+        }
+
+        .match-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .outfit-items {
+            margin-bottom: 1rem;
+        }
+
+        .outfit-items h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            transition: background 0.3s ease;
+        }
+
+        .item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .item-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .item-blue { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .item-khaki { background: linear-gradient(135deg, #d4a574 0%, #c4956a 100%); }
+        .item-white { background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%); color: #333; }
+        .item-jeans { background: linear-gradient(135deg, #4a90d9 0%, #357abd 100%); }
+        .item-jacket { background: linear-gradient(135deg, #8b4513 0%, #654321 100%); }
+        .item-black { background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%); }
+        .item-gray { background: linear-gradient(135deg, #808080 0%, #606060 100%); }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .item-category {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .weather-appropriateness {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .weather-appropriateness span {
+            font-size: 0.9rem;
+            color: var(--success);
+        }
+
+        .try-button {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, #ff6b6b 100%);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .try-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .try-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+        }
+
+        .try-button:hover::before {
+            left: 100%;
+        }
+
+        .try-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Generate More Button */
+        .generate-section {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .generate-button {
+            padding: 1.2rem 3rem;
+            border: 2px solid var(--accent-primary);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .generate-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--accent-primary);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .generate-button:hover {
+            color: white;
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .generate-button:hover::before {
+            width: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .weather-widget {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .weather-info {
+                text-align: center;
+            }
+
+            .outfit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .outfit-card {
+                padding: 1.25rem;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .loading {
+            background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-card-hover) 50%, var(--bg-card) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--bg-card);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--accent-primary);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Weather Widget -->
+        <div class="weather-widget">
+            <div class="weather-icon">☀️</div>
+            <div class="weather-info">
+                <div class="weather-temp">24°C</div>
+                <div class="weather-condition">Sunny</div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Today's Outfit Recommendations</h1>
+            <p>AI-curated styles based on your wardrobe and today's weather</p>
+        </div>
+
+        <!-- Outfit Grid -->
+        <div class="outfit-grid">
+            <!-- Outfit 1: Casual -->
+            <div class="outfit-card">
+                <div class="outfit-header">
+                    <span class="outfit-style style-casual">Casual</span>
+                    <div class="match-badge">
+                        <span class="match-percentage">85%</span>
+                        <span class="match-label">Match</span>
+                    </div>
+                </div>
+
+                <div class="outfit-items">
+                    <h3>From Your Wardrobe</h3>
+                    <div class="item-list">
+                        <div class="item">
+                            <div class="item-icon item-blue">👔</div>
+                            <div class="item-details">
+                                <div class="item-name">Blue Cotton Shirt</div>
+                                <div class="item-category">Top</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-icon item-khaki">👖</div>
+                            <div class="item-details">
+                                <div class="item-name">Khaki Chino Pants</div>
+                                <div class="item-category">Bottom</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-appropriateness">
+                    <span>✓</span>
+                    <span>Perfect for sunny 24°C weather</span>
+                </div>
+
+                <button class="try-button" onclick="tryOutfit('Casual Blue & Khaki')">Try This Outfit</button>
+            </div>
+
+            <!-- Outfit 2: Smart Casual -->
+            <div class="outfit-card">
+                <div class="outfit-header">
+                    <span class="outfit-style style-smart">Smart Casual</span>
+                    <div class="match-badge">
+                        <span class="match-percentage">92%</span>
+                        <span class="match-label">Match</span>
+                    </div>
+                </div>
+
+                <div class="outfit-items">
+                    <h3>From Your Wardrobe</h3>
+                    <div class="item-list">
+                        <div class="item">
+                            <div class="item-icon item-white">👕</div>
+                            <div class="item-details">
+                                <div class="item-name">White Basic Tee</div>
+                                <div class="item-category">Top</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-icon item-jeans">👖</div>
+                            <div class="item-details">
+                                <div class="item-name">Slim Fit Jeans</div>
+                                <div class="item-category">Bottom</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-icon item-jacket">🧥</div>
+                            <div class="item-details">
+                                <div class="item-name">Brown Leather Jacket</div>
+                                <div class="item-category">Outerwear</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-appropriateness">
+                    <span>✓</span>
+                    <span>Great for mild sunny weather</span>
+                </div>
+
+                <button class="try-button" onclick="tryOutfit('Smart Casual with Jacket')">Try This Outfit</button>
+            </div>
+
+            <!-- Outfit 3: Formal -->
+            <div class="outfit-card">
+                <div class="outfit-header">
+                    <span class="outfit-style style-formal">Formal</span>
+                    <div class="match-badge">
+                        <span class="match-percentage">78%</span>
+                        <span class="match-label">Match</span>
+                    </div>
+                </div>
+
+                <div class="outfit-items">
+                    <h3>From Your Wardrobe</h3>
+                    <div class="item-list">
+                        <div class="item">
+                            <div class="item-icon item-black">👔</div>
+                            <div class="item-details">
+                                <div class="item-name">Black Dress Shirt</div>
+                                <div class="item-category">Top</div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="item-icon item-gray">👖</div>
+                            <div class="item-details">
+                                <div class="item-name">Gray Dress Trousers</div>
+                                <div class="item-category">Bottom</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-appropriateness">
+                    <span>✓</span>
+                    <span>Suitable for indoor formal events</span>
+                </div>
+
+                <button class="try-button" onclick="tryOutfit('Formal Black & Gray')">Try This Outfit</button>
+            </div>
+        </div>
+
+        <!-- Generate More Button -->
+        <div class="generate-section">
+            <button class="generate-button" onclick="generateMore()">Generate More Outfits</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        function tryOutfit(outfitName) {
+            showToast(`✨ ${outfitName} added to your try-on list!`);
+        }
+
+        function generateMore() {
+            const button = document.querySelector('.generate-button');
+            button.textContent = 'Generating...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.textContent = 'Generate More Outfits';
+                button.disabled = false;
+                showToast('🎉 New outfit recommendations coming soon!');
+            }, 1500);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Add subtle parallax effect to cards on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.outfit-card');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            cards.forEach((card, index) => {
+                const speed = (index + 1) * 5;
+                const x = (window.innerWidth / 2 - e.clientX) / speed;
+                const y = (window.innerHeight / 2 - e.clientY) / speed;
+                
+                if (!card.matches(':hover')) {
+                    card.style.transform = `translate(${x}px, ${y}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style DNA Demo - WearX</title>
+    <meta name="description" content="Discover your unique Style DNA with WearX AI. Get personalized style analysis and recommendations.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #18181b;
+            --card: #ffffff;
+            --card-foreground: #18181b;
+            --primary: #18181b;
+            --primary-foreground: #fafafa;
+            --secondary: #f4f4f5;
+            --secondary-foreground: #18181b;
+            --muted: #f4f4f5;
+            --muted-foreground: #71717a;
+            --accent: #f4f4f5;
+            --accent-foreground: #18181b;
+            --border: #e4e4e7;
+            --input: #e4e4e7;
+            --ring: #a1a1aa;
+            --radius: 0.625rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+        
+        @media (min-width: 640px) {
+            .navbar-container {
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .navbar-container {
+                padding: 0 2rem;
+            }
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        
+        .nav-logo:hover {
+            opacity: 0.8;
+        }
+        
+        .nav-logo-icon {
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--primary-foreground);
+        }
+        
+        .nav-logo-text {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--foreground);
+        }
+        
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+        
+        .nav-link {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--foreground);
+            background: var(--secondary);
+        }
+        
+        .nav-link.active {
+            color: var(--foreground);
+            background: var(--secondary);
+        }
+        
+        .nav-cta {
+            display: none;
+            padding: 0.5rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary-foreground);
+            background: var(--primary);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-cta {
+                display: inline-flex;
+            }
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--secondary);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        .mobile-menu-btn:hover {
+            background: var(--border);
+        }
+        
+        .mobile-menu-btn svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: var(--foreground);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 4rem;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            z-index: 999;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--foreground);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+        }
+        
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+            background: var(--secondary);
+        }
+        
+        .mobile-nav-cta {
+            display: block;
+            margin-top: 0.5rem;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-foreground);
+            background: var(--primary);
+            text-align: center;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+        }
+        
+        .mobile-nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* ===== DEMO CONTENT ===== */
+        .demo-page {
+            padding-top: 4rem;
+            min-height: 100vh;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        @media (min-width: 640px) {
+            .demo-header {
+                padding: 4rem 1.5rem;
+            }
+        }
+        
+        .demo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+        
+        .demo-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 0.75rem;
+        }
+        
+        @media (min-width: 640px) {
+            .demo-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .demo-subtitle {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .demo-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .demo-container {
+                padding: 3rem 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .demo-container {
+                padding: 3rem 2rem;
+            }
+        }
+        
+        /* Style DNA Specific Styles */
+        .dna-visual {
+            max-width: 400px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+        
+        .dna-ring {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .dna-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .dna-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 0.5rem;
+        }
+        
+        .dna-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--foreground);
+        }
+        
+        .dna-segment {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .dna-segment:hover {
+            transform: scale(1.05);
+        }
+        
+        .dna-traits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .trait-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all 0.2s;
+        }
+        
+        .trait-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        .trait-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .trait-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+        .trait-icon.classic { background: #fef3c7; }
+        .trait-icon.casual { background: #dbeafe; }
+        .trait-icon.minimal { background: #f3e8ff; }
+        .trait-icon.bold { background: #fee2e2; }
+        
+        .trait-name {
+            font-weight: 600;
+            color: var(--foreground);
+        }
+        
+        .trait-percentage {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+        
+        .trait-bar {
+            height: 8px;
+            background: var(--secondary);
+            border-radius: 9999px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+        
+        .trait-fill {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 1s ease;
+        }
+        
+        .trait-fill.classic { background: #f59e0b; }
+        .trait-fill.casual { background: #3b82f6; }
+        .trait-fill.minimal { background: #8b5cf6; }
+        .trait-fill.bold { background: #ef4444; }
+        
+        .trait-description {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            line-height: 1.5;
+        }
+        
+        /* Style Recommendations */
+        .recommendations {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--secondary);
+            border-radius: var(--radius);
+        }
+        
+        .recommendations-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .recommendation-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+        
+        .recommendation-tag {
+            padding: 0.5rem 1rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        /* Navigation between demos */
+        .demo-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .demo-nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--foreground);
+            background: var(--secondary);
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .demo-nav-link:hover {
+            background: var(--border);
+        }
+        
+        .demo-nav-link svg {
+            width: 1rem;
+            height: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .cta-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-foreground);
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--background);
+            border-top: 1px solid var(--border);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-text {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+        
+        .page-transition {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="page-transition">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="demo-index.html" class="nav-logo">
+                <div class="nav-logo-icon">W</div>
+                <span class="nav-logo-text">WearX</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="demo-index.html" class="nav-link">Home</a>
+                <a href="wardrobe-demo.html" class="nav-link">Wardrobe</a>
+                <a href="outfit-demo.html" class="nav-link">Outfits</a>
+                <a href="style-dna-demo.html" class="nav-link active">Style DNA</a>
+                <a href="value-tracker-demo.html" class="nav-link">Value Tracker</a>
+            </div>
+            
+            <a href="../index.html#waitlist" class="nav-cta">Join Beta</a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="closeIcon" style="display: none;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="demo-index.html" class="mobile-nav-link">Home</a>
+        <a href="wardrobe-demo.html" class="mobile-nav-link">Wardrobe</a>
+        <a href="outfit-demo.html" class="mobile-nav-link">Outfits</a>
+        <a href="style-dna-demo.html" class="mobile-nav-link active">Style DNA</a>
+        <a href="value-tracker-demo.html" class="mobile-nav-link">Value Tracker</a>
+        <a href="../index.html#waitlist" class="mobile-nav-cta">Join Beta</a>
+    </div>
+    
+    <!-- Demo Page Content -->
+    <div class="demo-page">
+        <header class="demo-header">
+            <div class="demo-badge">🧬 Style DNA Demo</div>
+            <h1 class="demo-title">Discover Your Style DNA</h1>
+            <p class="demo-subtitle">Our AI analyzes your preferences, wardrobe, and choices to create your unique style profile.</p>
+        </header>
+        
+        <div class="demo-container">
+            <!-- DNA Visualization -->
+            <div class="dna-visual">
+                <div class="dna-ring">
+                    <svg viewBox="0 0 300 300" style="width: 100%; height: 100%;">
+                        <!-- Background circle -->
+                        <circle cx="150" cy="150" r="140" fill="none" stroke="var(--border)" stroke-width="20" />
+                        <!-- Style segments -->
+                        <circle cx="150" cy="150" r="140" fill="none" stroke="#f59e0b" stroke-width="20" 
+                            stroke-dasharray="220 660" stroke-dashoffset="0" transform="rotate(-90 150 150)" />
+                        <circle cx="150" cy="150" r="140" fill="none" stroke="#3b82f6" stroke-width="20" 
+                            stroke-dasharray="176 660" stroke-dashoffset="-220" transform="rotate(-90 150 150)" />
+                        <circle cx="150" cy="150" r="140" fill="none" stroke="#8b5cf6" stroke-width="20" 
+                            stroke-dasharray="132 660" stroke-dashoffset="-396" transform="rotate(-90 150 150)" />
+                        <circle cx="150" cy="150" r="140" fill="none" stroke="#ef4444" stroke-width="20" 
+                            stroke-dasharray="132 660" stroke-dashoffset="-528" transform="rotate(-90 150 150)" />
+                    </svg>
+                    
+                    <div class="dna-center">
+                        <div class="dna-avatar">😎</div>
+                        <div class="dna-label">Your Style</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Style Traits -->
+            <div class="dna-traits">
+                <div class="trait-card">
+                    <div class="trait-header">
+                        <div class="trait-icon classic">👔</div>
+                        <div>
+                            <div class="trait-name">Classic</div>
+                            <div class="trait-percentage">35%</div>
+                        </div>
+                    </div>
+                    <div class="trait-bar">
+                        <div class="trait-fill classic" style="width: 35%;"></div>
+                    </div>
+                    <p class="trait-description">You appreciate timeless pieces and traditional silhouettes. Quality over trends.</p>
+                </div>
+                
+                <div class="trait-card">
+                    <div class="trait-header">
+                        <div class="trait-icon casual">☕</div>
+                        <div>
+                            <div class="trait-name">Casual</div>
+                            <div class="trait-percentage">28%</div>
+                        </div>
+                    </div>
+                    <div class="trait-bar">
+                        <div class="trait-fill casual" style="width: 28%;"></div>
+                    </div>
+                    <p class="trait-description">Comfort is key. You prefer relaxed fits and easy-going styles for everyday wear.</p>
+                </div>
+                
+                <div class="trait-card">
+                    <div class="trait-header">
+                        <div class="trait-icon minimal">⬜</div>
+                        <div>
+                            <div class="trait-name">Minimal</div>
+                            <div class="trait-percentage">20%</div>
+                        </div>
+                    </div>
+                    <div class="trait-bar">
+                        <div class="trait-fill minimal" style="width: 20%;"></div>
+                    </div>
+                    <p class="trait-description">Less is more. Clean lines, neutral palettes, and intentional simplicity define your look.</p>
+                </div>
+                
+                <div class="trait-card">
+                    <div class="trait-header">
+                        <div class="trait-icon bold">🔥</div>
+                        <div>
+                            <div class="trait-name">Bold</div>
+                            <div class="trait-percentage">17%</div>
+                        </div>
+                    </div>
+                    <div class="trait-bar">
+                        <div class="trait-fill bold" style="width: 17%;"></div>
+                    </div>
+                    <p class="trait-description">You don't shy away from statement pieces and aren't afraid to stand out from the crowd.</p>
+                </div>
+            </div>
+            
+            <!-- Recommendations -->
+            <div class="recommendations">
+                <h3 class="recommendations-title">Recommended For Your Style</h3>
+                
+                <div class="recommendation-tags">
+                    <span class="recommendation-tag">Tailored Blazers</span>
+                    <span class="recommendation-tag">Oxford Shirts</span>
+                    <span class="recommendation-tag">Dark Denim</span>
+                    <span class="recommendation-tag">Leather Accessories</span>
+                    <span class="recommendation-tag">Neutral Tones</span>
+                    <span class="recommendation-tag">Quality Knitwear</span>
+                    <span class="recommendation-tag">Minimal Sneakers</span>
+                    <span class="recommendation-tag">Classic Watches</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation between demos -->
+        <div class="demo-nav">
+            <a href="outfit-demo.html" class="demo-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Previous: Outfits
+            </a>
+            <a href="value-tracker-demo.html" class="demo-nav-link">
+                Next: Value Tracker
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Unlock your full style potential</h2>
+            <p class="cta-text">Get your complete Style DNA analysis and personalized recommendations with WearX.</p>
+            <a href="../index.html#waitlist" class="cta-button">Try Beta Free →</a>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">© 2025 WearX. All rights reserved. <a href="demo-index.html" style="color: inherit;">Back to Demos</a></p>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const isOpen = mobileMenu.classList.contains('open');
+            menuIcon.style.display = isOpen ? 'none' : 'block';
+            closeIcon.style.display = isOpen ? 'block' : 'none';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            });
+        });
+        
+        // Animate trait bars on load
+        window.addEventListener('load', () => {
+            const traitFills = document.querySelectorAll('.trait-fill');
+            traitFills.forEach(fill => {
+                const width = fill.style.width;
+                fill.style.width = '0';
+                setTimeout(() => {
+                    fill.style.width = width;
+                }, 300);
+            });
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardrobe Value Tracker - Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #334155;
+            --bg-hover: #475569;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #ec4899;
+            --accent-success: #10b981;
+            --accent-warning: #f59e0b;
+            --accent-danger: #ef4444;
+            --accent-info: #3b82f6;
+            --border-color: #475569;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #1a1a2e 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+        }
+
+        .user-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon.purple { background: rgba(139, 92, 246, 0.2); }
+        .stat-icon.pink { background: rgba(236, 72, 153, 0.2); }
+        .stat-icon.green { background: rgba(16, 185, 129, 0.2); }
+        .stat-icon.blue { background: rgba(59, 130, 246, 0.2); }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 0.25rem;
+        }
+
+        .stat-subtext {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Badge Showcase */
+        .badges-container {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+        }
+
+        .badge-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1rem 0.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .badge-item.unlocked {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .badge-item.unlocked:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .badge-item.locked {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            opacity: 0.6;
+        }
+
+        .badge-item.locked:hover {
+            opacity: 0.8;
+        }
+
+        .badge-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .badge-item.unlocked .badge-icon {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            animation: badgeGlow 2s ease-in-out infinite;
+        }
+
+        .badge-item.locked .badge-icon {
+            background: var(--bg-hover);
+            filter: grayscale(100%);
+        }
+
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(139, 92, 246, 0.5); }
+            50% { box-shadow: 0 0 25px rgba(236, 72, 153, 0.8); }
+        }
+
+        .badge-name {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .badge-item.locked .badge-name {
+            color: var(--text-muted);
+        }
+
+        .badge-progress {
+            width: 100%;
+            height: 4px;
+            background: var(--bg-hover);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .badge-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        .badge-progress-text {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Item List */
+        .items-container {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .item-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--bg-card);
+            border-radius: 0.75rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .item-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(4px);
+        }
+
+        .item-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, var(--bg-hover), var(--bg-card));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .item-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .item-stats {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .item-stat {
+            text-align: center;
+        }
+
+        .item-stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .item-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .value-rating {
+            padding: 0.375rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .value-rating.champion {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--accent-success);
+        }
+
+        .value-rating.smart {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent-info);
+        }
+
+        .value-rating.developing {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent-warning);
+        }
+
+        /* Insights Section */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .insight-card {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .insight-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .insight-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .insight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: var(--bg-card);
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .insight-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .insight-icon.gem { background: rgba(16, 185, 129, 0.2); }
+        .insight-icon.love { background: rgba(245, 158, 11, 0.2); }
+
+        /* Sustainability Score */
+        .sustainability-card {
+            background: var(--bg-secondary);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            margin-top: 1.5rem;
+        }
+
+        .sustainability-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .sustainability-score {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .score-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: conic-gradient(var(--accent-success) 0deg 252deg, var(--bg-card) 252deg 360deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+        }
+
+        .score-value {
+            position: relative;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-success);
+        }
+
+        .score-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .score-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .sustainability-badges {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .sustain-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Progress Section */
+        .progress-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            margin-top: 1.5rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .progress-stats {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .progress-stat {
+            text-align: center;
+        }
+
+        .progress-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+
+        .progress-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .next-badges {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .next-badge {
+            flex: 1;
+            background: var(--bg-secondary);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .next-badge-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .next-badge-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            filter: grayscale(100%);
+        }
+
+        .next-badge-name {
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .next-badge-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .progress-bar-container {
+            margin-top: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--bg-hover);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .item-card {
+                flex-wrap: wrap;
+            }
+
+            .item-stats {
+                width: 100%;
+                justify-content: space-around;
+                margin-top: 0.5rem;
+                padding-top: 0.5rem;
+                border-top: 1px solid var(--border-color);
+            }
+
+            .badges-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .next-badges {
+                flex-direction: column;
+            }
+
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-card, .badge-item, .item-card, .insight-card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div>
+                <h1>👗 Wardrobe Value Tracker</h1>
+                <p class="header-subtitle">Track cost-per-wear and unlock achievements</p>
+            </div>
+            <div class="user-badge">
+                <div class="user-avatar">JD</div>
+                <div>
+                    <div style="font-weight: 600; font-size: 0.9rem;">Jane Doe</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">Style Enthusiast</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon purple">💎</div>
+                <div class="stat-label">Total Wardrobe Value</div>
+                <div class="stat-value">$2,450</div>
+                <div class="stat-subtext">Across 34 items</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon pink">📊</div>
+                <div class="stat-label">Cost Per Wear Average</div>
+                <div class="stat-value">$12.50</div>
+                <div class="stat-subtext">↓ 15% from last month</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green">👕</div>
+                <div class="stat-label">Total Items</div>
+                <div class="stat-value">34</div>
+                <div class="stat-subtext">12 added this year</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon blue">⭐</div>
+                <div class="stat-label">Most Worn Item</div>
+                <div class="stat-value" style="font-size: 1.5rem;">Blue Jeans</div>
+                <div class="stat-subtext">45 wears · $2.20 per wear</div>
+            </div>
+        </div>
+
+        <!-- Badge Showcase -->
+        <div class="section-header">
+            <h2 class="section-title">🏆 Badge Showcase</h2>
+            <span style="color: var(--text-muted); font-size: 0.875rem;">6 of 20 unlocked</span>
+        </div>
+        <div class="badges-container">
+            <div class="badges-grid">
+                <!-- Unlocked Badges -->
+                <div class="badge-item unlocked">
+                    <div class="badge-icon">🌱</div>
+                    <div class="badge-name">First Steps</div>
+                    <div class="badge-progress-text">Unlocked!</div>
+                </div>
+                <div class="badge-item unlocked">
+                    <div class="badge-icon">📸</div>
+                    <div class="badge-name">Photographer</div>
+                    <div class="badge-progress-text">Unlocked!</div>
+                </div>
+                <div class="badge-item unlocked">
+                    <div class="badge-icon">💰</div>
+                    <div class="badge-name">Smart Buyer</div>
+                    <div class="badge-progress-text">Unlocked!</div>
+                </div>
+                <div class="badge-item unlocked">
+                    <div class="badge-icon">♻️</div>
+                    <div class="badge-name">Eco Warrior</div>
+                    <div class="badge-progress-text">Unlocked!</div>
+                </div>
+                <div class="badge-item unlocked">
+                    <div class="badge-icon">🔥</div>
+                    <div class="badge-name">Trend Setter</div>
+                    <div class="badge-progress-text">Unlocked!</div>
+                </div>
+                <div class="badge-item unlocked">
+                    <div class="badge-icon">👑</div>
+                    <div class="badge-name">Style Icon</div>
+                    <div class="badge-progress-text">Unlocked!</div>
+                </div>
+                <!-- Locked Badges -->
+                <div class="badge-item locked">
+                    <div class="badge-icon">🎯</div>
+                    <div class="badge-name">Goal Crusher</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 75%;"></div>
+                    </div>
+                    <div class="badge-progress-text">3/4 goals</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">🏃</div>
+                    <div class="badge-name">Active Wear</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 60%;"></div>
+                    </div>
+                    <div class="badge-progress-text">6/10 items</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">✈️</div>
+                    <div class="badge-name">Travel Ready</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 40%;"></div>
+                    </div>
+                    <div class="badge-progress-text">2/5 capsules</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">🎨</div>
+                    <div class="badge-name">Color Master</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 50%;"></div>
+                    </div>
+                    <div class="badge-progress-text">5/10 colors</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">🧥</div>
+                    <div class="badge-name">Layer Pro</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 30%;"></div>
+                    </div>
+                    <div class="badge-progress-text">3/10 layers</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">👔</div>
+                    <div class="badge-name">Formal Affair</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 20%;"></div>
+                    </div>
+                    <div class="badge-progress-text">1/5 formal</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">👟</div>
+                    <div class="badge-name">Sneaker Head</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 25%;"></div>
+                    </div>
+                    <div class="badge-progress-text">2/8 sneakers</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">👜</div>
+                    <div class="badge-name">Bag Collector</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 33%;"></div>
+                    </div>
+                    <div class="badge-progress-text">2/6 bags</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">🧣</div>
+                    <div class="badge-name">Accessory Pro</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 45%;"></div>
+                    </div>
+                    <div class="badge-progress-text">9/20 accessories</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">🌟</div>
+                    <div class="badge-name">Minimalist</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 80%;"></div>
+                    </div>
+                    <div class="badge-progress-text">16/20 items</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">📅</div>
+                    <div class="badge-name">Daily Streak</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 10%;"></div>
+                    </div>
+                    <div class="badge-progress-text">3/30 days</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">🎁</div>
+                    <div class="badge-name">Gift Giver</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="badge-progress-text">0/3 donated</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">💎</div>
+                    <div class="badge-name">Luxury Lover</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="badge-progress-text">0/3 luxury</div>
+                </div>
+                <div class="badge-item locked">
+                    <div class="badge-icon">🌈</div>
+                    <div class="badge-name">Vintage Vibes</div>
+                    <div class="badge-progress">
+                        <div class="badge-progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="badge-progress-text">0/5 vintage</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Badges Progress -->
+        <div class="progress-section">
+            <div class="progress-header">
+                <div class="progress-title">🎯 Close to Unlocking</div>
+                <div class="progress-stats">
+                    <div class="progress-stat">
+                        <div class="progress-stat-value">6</div>
+                        <div class="progress-stat-label">Unlocked</div>
+                    </div>
+                    <div class="progress-stat">
+                        <div class="progress-stat-value">14</div>
+                        <div class="progress-stat-label">Locked</div>
+                    </div>
+                </div>
+            </div>
+            <div class="next-badges">
+                <div class="next-badge">
+                    <div class="next-badge-header">
+                        <div class="next-badge-icon">🎯</div>
+                        <div>
+                            <div class="next-badge-name">Goal Crusher</div>
+                            <div class="next-badge-desc">Complete 4 style goals</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 75%;"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>3 of 4</span>
+                            <span>75%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="next-badge">
+                    <div class="next-badge-header">
+                        <div class="next-badge-icon">🌟</div>
+                        <div>
+                            <div class="next-badge-name">Minimalist</div>
+                            <div class="next-badge-desc">Maintain 20-item wardrobe</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 80%;"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>16 of 20</span>
+                            <span>80%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="next-badge">
+                    <div class="next-badge-header">
+                        <div class="next-badge-icon">🏃</div>
+                        <div>
+                            <div class="next-badge-name">Active Wear</div>
+                            <div class="next-badge-desc">Add 10 activewear items</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 60%;"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>6 of 10</span>
+                            <span>60%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Item List -->
+        <div class="section-header">
+            <h2 class="section-title">👔 Your Items</h2>
+            <span style="color: var(--text-muted); font-size: 0.875rem;">Showing 5 of 34</span>
+        </div>
+        <div class="items-container">
+            <div class="items-list">
+                <div class="item-card">
+                    <div class="item-photo">👖</div>
+                    <div class="item-info">
+                        <div class="item-name">Classic Blue Jeans</div>
+                        <div class="item-meta">
+                            <span>Purchased: Jan 2023</span>
+                            <span>·</span>
+                            <span>Category: Bottoms</span>
+                        </div>
+                    </div>
+                    <div class="item-stats">
+                        <div class="item-stat">
+                            <div class="item-stat-value">$99</div>
+                            <div class="item-stat-label">Price</div>
+                        </div>
+                        <div class="item-stat">
+                            <div class="item-stat-value">45</div>
+                            <div class="item-stat-label">Wears</div>
+                        </div>
+                        <div class="item-stat">
+                            <div class="item-stat-value" style="color: var(--accent-success);">$2.20</div>
+                            <div class="item-stat-label">CPW</div>
+                        </div>
+                        <span class="value-rating champion">Champion</span>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-photo">👗</div>
+                    <div class="item-info">
+                        <div class="item-name">Summer Floral Dress</div>
+                        <div class="item-meta">
+                            <span>Purchased: May 2023</span>
+                            <span>·</span>
+                            <span>Category: Dresses</span>
+                        </div>
+                    </div>
+                    <div class="item-stats">
+                        <div class="item-stat">
+                            <div class="item-stat-value">$85</div>
+                            <div class="item-stat-label">Price</div>
+                        </div>
+                        <div class="item-stat">
+                            <div class="item-stat-value">12</div>
+                            <div class="item-stat-label">Wears</div>
+                        </div>
+                        <div class="item-stat">
+                            <div class="item-stat-value" style="color: var(--accent-info);">$7.08</div>
+                            <div class="item-stat-label">CPW</div>
+                        </div>
+                        <span class="value-rating smart">Smart</span>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-photo">👔</div>
+                    <div class="item-info">
+                        <div class="item-name">White Oxford Shirt</div>
+                        <div class="item-meta">
+                            <span>Purchased: Feb 2023</span>
+                            <span>·</span>
+                            <span>Category: Tops</span>
+                        </div>
+                    </div>
+                    <div class="item-stats">
+                        <div class="item-stat">
+                            <div class="item-stat-value">$65</div>
+                            <div class="item-stat-label">Price</div>
+                        </div>
+                        <div class="item-stat">
+                            <div class="item-stat-value">28</div>
+                            <div class="item-stat-label">Wears</div>
+                        </div>
+                        <div class="item-stat">
+                            <div class="item-stat-value" style="color: var(--accent-success);">$2.32</div>
+                            <div class="item-stat-label">CPW</div>
+                        </div>
+                        <span class="value-rating champion">Champion</span>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-photo">🧥</div>
+                    <div class="item-info">
+                        <div class="item-name">Wool Winter Coat</div>
+                        <div class="item-meta">
+                            <span>Purchased: Nov 2023</span>
+                            <span>·</span>
+                            <span>Category: Outerwear</span>
+                        </div>
+                    </div>
+                    <div class="item-stats">
+                        <div class="item-stat">
+                            <div class="item-stat-value">$280</div>
+                            <div class="item-stat-label">Price</div>
+                        </div>
+                        <div class="item-stat">
+                            <div class="item-stat-value">8</div>
+                            <div class="item-stat-label">Wears</div>
+                        </div>
+                        <div class="item-stat">
+                            <div class="item-stat-value" style="color: var(--accent-warning);">$35.00</div>
+                            <div class="item-stat-label">CPW</div>
+                        </div>
+                        <span class="value-rating developing">Developing</span>
+                    </div>
+                </div>
+
+                <div class="item-card">
+                    <div class="item-photo">👟</div>
+                    <div class="item-info">
+                        <div class="item-name">Leather Sneakers</div>
+                        <div class="item-meta">
+                            <span>Purchased: Mar 2023</span>
+                            <span>·</span>
+                            <span>Category: Shoes</span>
+                        </div>
+                    </div>
+                    <div class="item-stats">
+                        <div class="item-stat">
+                            <div class="item-stat-value">$120</div>
+                            <div class="item-stat-label">Price</div>
+                        </div>
+                        <div class="item-stat">
+                            <div class="item-stat-value">22</div>
+                            <div class="item-stat-label">Wears</div>
+                        </div>
+                        <div class="item-stat">
+                            <div class="item-stat-value" style="color: var(--accent-info);">$5.45</div>
+                            <div class="item-stat-label">CPW</div>
+                        </div>
+                        <span class="value-rating smart">Smart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insights Section -->
+        <div class="section-header">
+            <h2 class="section-title">💡 Insights</h2>
+        </div>
+        <div class="insights-grid">
+            <!-- Hidden Gems -->
+            <div class="insight-card">
+                <h3><span style="font-size: 1.25rem;">💎</span> Hidden Gems</h3>
+                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">Items with excellent cost-per-wear that deserve more love</p>
+                <div class="insight-list">
+                    <div class="insight-item">
+                        <div class="insight-icon gem">👕</div>
+                        <div>
+                            <div style="font-weight: 500;">Striped T-Shirt</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">$1.50 CPW · 20 wears</div>
+                        </div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-icon gem">🧣</div>
+                        <div>
+                            <div style="font-weight: 500;">Cashmere Scarf</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">$3.20 CPW · 15 wears</div>
+                        </div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-icon gem">👜</div>
+                        <div>
+                            <div style="font-weight: 500;">Canvas Tote</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">$0.80 CPW · 50 wears</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Needs Love -->
+            <div class="insight-card">
+                <h3><span style="font-size: 1.25rem;">💝</span> Needs Love</h3>
+                <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1rem;">Items with high CPW that need more wears to improve value</p>
+                <div class="insight-list">
+                    <div class="insight-item">
+                        <div class="insight-icon love">👠</div>
+                        <div>
+                            <div style="font-weight: 500;">Red Heels</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">$45.00 CPW · 2 wears</div>
+                        </div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-icon love">🎩</div>
+                        <div>
+                            <div style="font-weight: 500;">Fancy Hat</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">$32.00 CPW · 1 wear</div>
+                        </div>
+                    </div>
+                    <div class="insight-item">
+                        <div class="insight-icon love">👗</div>
+                        <div>
+                            <div style="font-weight: 500;">Cocktail Dress</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">$28.50 CPW · 4 wears</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sustainability Score -->
+        <div class="sustainability-card">
+            <div class="sustainability-header">
+                <div class="sustainability-score">
+                    <div class="score-circle">
+                        <div class="score-value">70</div>
+                    </div>
+                    <div>
+                        <div class="score-title">Sustainability Score</div>
+                        <div class="score-label">You're doing great! 🌱</div>
+                    </div>
+                </div>
+            </div>
+            <div class="sustainability-badges">
+                <div class="sustain-badge">
+                    <span>♻️</span>
+                    <span>12 items thrifted</span>
+                </div>
+                <div class="sustain-badge">
+                    <span>🌿</span>
+                    <span>8 organic pieces</span>
+                </div>
+                <div class="sustain-badge">
+                    <span>🏭</span>
+                    <span>5 local brands</span>
+                </div>
+                <div class="sustain-badge">
+                    <span>💚</span>
+                    <span>3 repairs made</span>
+                </div>
+                <div class="sustain-badge">
+                    <span>📦</span>
+                    <span>2 items donated</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animate progress bars on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBars = document.querySelectorAll('.progress-bar-fill, .badge-progress-bar');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+
+        // Add hover effects to badge items
+        document.querySelectorAll('.badge-item').forEach(badge => {
+            badge.addEventListener('mouseenter', () => {
+                if (badge.classList.contains('unlocked')) {
+                    badge.style.transform = 'scale(1.05)';
+                }
+            });
+            badge.addEventListener('mouseleave', () => {
+                badge.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

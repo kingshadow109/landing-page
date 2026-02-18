@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WearX - AI Fashion App</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FSP1DKFFWV"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FSP1DKFFWV');</script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#667eea0%,#764ba2100%);min-height:100vh;color:white;padding:40px20px}
+        .container{max-width:900px;margin:0auto;text-align:center}
+        h1{font-size:3em;margin-bottom:10px}
+        .tagline{font-size:1.3em;opacity:0.9;margin-bottom:40px}
+        .waitlist-box{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border-radius:20px;padding:40px;margin-bottom:40px;border:1pxsolidrgba(255,255,255,0.2)}
+        .waitlist-box h2{margin-bottom:20px}
+        .waitlist-box p{margin-bottom:30px;opacity:0.9}
+        form{display:flex;flex-direction:column;gap:15px;max-width:400px;margin:0auto}
+        input[type="email"]{padding:15px20px;border-radius:10px;border:none;font-size:1em}
+        button{padding:15px30px;border-radius:10px;border:none;background:#ff6b6b;color:white;font-size:1.1em;font-weight:bold;cursor:pointer}
+        .success{display:none;background:rgba(0,255,0,0.2);padding:20px;border-radius:10px;margin-top:20px}
+        .demos{background:rgba(255,255,255,0.1);border-radius:20px;padding:30px;margin-top:40px}
+        .demos h2{margin-bottom:30px}
+        .demo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+        .demo-card{background:rgba(255,255,255,0.1);padding:25px;border-radius:15px;cursor:pointer;transition:all0.3s;border:1pxsolidrgba(255,255,255,0.2);text-decoration:none;color:white;display:block}
+        .demo-card:hover{transform:translateY(-5px);background:rgba(255,255,255,0.2)}
+        .demo-icon{font-size:2.5em;margin-bottom:15px}
+        .demo-card h3{margin-bottom:10px}
+        .demo-card p{font-size:0.9em;opacity:0.8}
+        footer{margin-top:60px;opacity:0.7}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👗 WearX</h1>
+        <p class="tagline">AI-Powered Fashion Stylist</p>
+        
+        <div class="waitlist-box">
+            <h2>Join the Beta</h2>
+            <p>Be the first to experience AI-curated fashion.</p>
+            
+            <form id="waitlistForm" action="https://formspree.io/f/xeelzopo" method="POST">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="hidden" name="_subject" value="New WearX Beta Signup">
+                <button type="submit">Join the Waitlist →</button>
+            </form>
+            
+            <div class="success" id="successMsg">
+                ✅ You're on the list! We'll notify you when we launch.
+            </div>
+        </div>
+        
+        <div class="demos">
+            <h2>🎮 Try the Demo</h2>
+            <p style="margin-bottom:30px;opacity:0.9">Experience WearX features before the official launch:</p>
+            
+            <div class="demo-grid">
+                <a href="https://codepen.io/team/wearx/full/wardrobe-demo" target="_blank" class="demo-card" onclick="gtag('event','demo_click',{demo:'wardrobe'})">
+                    <div class="demo-icon">👔</div>
+                    <h3>Wardrobe</h3>
+                    <p>Upload photos & AI analysis</p>
+                </a>
+                
+                <a href="https://codepen.io/team/wearx/full/outfits-demo" target="_blank" class="demo-card" onclick="gtag('event','demo_click',{demo:'outfits'})">
+                    <div class="demo-icon">🎯</div>
+                    <h3>Outfits</h3>
+                    <p>AI recommendations</p>
+                </a>
+                
+                <a href="https://codepen.io/team/wearx/full/style-dna" target="_blank" class="demo-card" onclick="gtag('event','demo_click',{demo:'style-dna'})">
+                    <div class="demo-icon">🧬</div>
+                    <h3>Style DNA</h3>
+                    <p>Discover your style</p>
+                </a>
+                
+                <a href="https://codepen.io/team/wearx/full/gamification" target="_blank" class="demo-card" onclick="gtag('event','demo_click',{demo:'gamification'})">
+                    <div class="demo-icon">💰</div>
+                    <h3>Value Tracker</h3>
+                    <p>Badges & insights</p>
+                </a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2026 WearX. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.getElementById('waitlistForm').addEventListener('submit',function(e){
+            e.preventDefault();
+            var form=this;
+            fetch(form.action,{
+                method:'POST',
+                body:new FormData(form),
+                headers:{Accept:'application/json'}
+            }).then(function(){
+                form.style.display='none';
+                document.getElementById('successMsg').style.display='block';
+                gtag('event','waitlist_signup');
+            }).catch(function(){
+                alert('Error. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
