@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>WearX - AI-Powered Fashion</title>
+  <meta name="description" content="Join the waitlist for WearX. AI-curated fashion meets seamless shopping. Be the first to experience the future of style.">
+  <meta name="keywords" content="fashion, AI fashion, wearx, style tech, fashion app, clothing, accessories">
+  <meta name="author" content="WearX Team">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://wearx.app">
+  <meta property="og:title" content="WearX - AI-Powered Fashion">
+  <meta property="og:description" content="Join the waitlist for WearX. AI-curated fashion meets seamless shopping. Be the first to experience the future of style.">
+  <meta property="og:site_name" content="WearX">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WearX - AI-Powered Fashion">
+  <meta name="twitter:description" content="Join the waitlist for WearX. AI-curated fashion meets seamless shopping. Be the first to experience the future of style.">
+  <meta name="twitter:creator" content="@wearx">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FSP1DKFFWV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FSP1DKFFWV', {
+      page_title: document.title,
+      page_location: window.location.href,
+      send_page_view: true
+    });
+  </script>
+  
+  <style>
+    :root {
+      --background: #ffffff;
+      --foreground: #18181b;
+      --card: #ffffff;
+      --card-foreground: #18181b;
+      --primary: #18181b;
+      --primary-foreground: #fafafa;
+      --secondary: #f4f4f5;
+      --secondary-foreground: #18181b;
+      --muted: #f4f4f5;
+      --muted-foreground: #71717a;
+      --accent: #f4f4f5;
+      --accent-foreground: #18181b;
+      --border: #e4e4e7;
+      --input: #e4e4e7;
+      --ring: #a1a1aa;
+      --radius: 0.625rem;
+    }
+    
+    .dark {
+      --background: #09090b;
+      --foreground: #fafafa;
+      --card: #18181b;
+      --card-foreground: #fafafa;
+      --primary: #e4e4e7;
+      --primary-foreground: #18181b;
+      --secondary: #27272a;
+      --secondary-foreground: #fafafa;
+      --muted: #27272a;
+      --muted-foreground: #a1a1aa;
+      --accent: #27272a;
+      --accent-foreground: #fafafa;
+      --border: rgba(255,255,255,0.1);
+      --input: rgba(255,255,255,0.15);
+      --ring: #52525b;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #fafafa 0%, #ffffff 50%, #f5f5f5 100%);
+    }
+    
+    .dark .hero-bg {
+      background: linear-gradient(135deg, #09090b 0%, #18181b 50%, #09090b 100%);
+    }
+    
+    .hero-blob-1 {
+      position: absolute;
+      top: 5rem;
+      left: 2.5rem;
+      width: 18rem;
+      height: 18rem;
+      background: rgba(228, 228, 231, 0.5);
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+    
+    .dark .hero-blob-1 {
+      background: rgba(39, 39, 42, 0.3);
+    }
+    
+    .hero-blob-2 {
+      position: absolute;
+      bottom: 5rem;
+      right: 2.5rem;
+      width: 24rem;
+      height: 24rem;
+      background: rgba(212, 212, 216, 0.3);
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+    
+    .dark .hero-blob-2 {
+      background: rgba(63, 63, 70, 0.2);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 5rem 1rem;
+      text-align: center;
+    }
+    
+    @media (min-width: 640px) {
+      .hero-content {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .hero-content {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+    
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      margin-bottom: 2rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--secondary-foreground);
+    }
+    
+    .badge-icon {
+      width: 1rem;
+      height: 1rem;
+      color: var(--muted-foreground);
+    }
+    
+    /* Typography */
+    .hero-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--foreground);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+    
+    @media (min-width: 640px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 3.75rem;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 4.5rem;
+      }
+    }
+    
+    .gradient-text {
+      background: linear-gradient(to right, #52525b, #18181b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .dark .gradient-text {
+      background: linear-gradient(to right, #a1a1aa, #fafafa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      max-width: 42rem;
+      margin: 0 auto 2.5rem;
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+      line-height: 1.75;
+    }
+    
+    @media (min-width: 640px) {
+      .hero-subtitle {
+        font-size: 1.25rem;
+      }
+    }
+    
+    /* Waitlist Form */
+    .waitlist-card {
+      width: 100%;
+      max-width: 28rem;
+      margin: 0 auto 3rem;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+    }
+    
+    .dark .waitlist-card {
+      background: rgba(24, 24, 27, 0.8);
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--secondary-foreground);
+      margin-bottom: 0.5rem;
+    }
+    
+    .input-wrapper {
+      position: relative;
+    }
+    
+    .input-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1rem;
+      height: 1rem;
+      color: var(--muted-foreground);
+      pointer-events: none;
+    }
+    
+    .form-input {
+      width: 100%;
+      height: 3rem;
+      padding: 0 1rem 0 2.5rem;
+      font-size: 0.875rem;
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--foreground);
+      outline: none;
+      transition: all 0.2s;
+    }
+    
+    .form-input:focus {
+      border-color: var(--ring);
+      box-shadow: 0 0 0 2px var(--ring);
+    }
+    
+    .form-input::placeholder {
+      color: var(--muted-foreground);
+    }
+    
+    .form-error {
+      font-size: 0.875rem;
+      color: #ef4444;
+      margin-top: 0.25rem;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      height: 3rem;
+      padding: 0 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: var(--primary-foreground);
+    }
+    
+    .btn-primary:hover:not(:disabled) {
+      background: #27272a;
+    }
+    
+    .dark .btn-primary:hover:not(:disabled) {
+      background: #d4d4d8;
+    }
+    
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .form-footer {
+      font-size: 0.75rem;
+      text-align: center;
+      color: var(--muted-foreground);
+      margin-top: 0.75rem;
+    }
+    
+    /* Success State */
+    .success-state {
+      text-align: center;
+      padding: 1rem 0;
+    }
+    
+    .success-icon {
+      width: 3rem;
+      height: 3rem;
+      margin: 0 auto 1rem;
+      background: #dcfce7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .dark .success-icon {
+      background: rgba(34, 197, 94, 0.2);
+    }
+    
+    .success-icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: #16a34a;
+    }
+    
+    .dark .success-icon svg {
+      color: #4ade80;
+    }
+    
+    .success-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--foreground);
+      margin-bottom: 0.25rem;
+    }
+    
+    .success-message {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+    
+    /* Stats */
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    
+    @media (min-width: 640px) {
+      .stats {
+        gap: 3rem;
+      }
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--foreground);
+    }
+    
+    @media (min-width: 640px) {
+      .stat-value {
+        font-size: 2.25rem;
+      }
+    }
+    
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      margin-top: 0.25rem;
+    }
+    
+    .stat-divider {
+      display: none;
+      width: 1px;
+      height: 4rem;
+      background: var(--border);
+    }
+    
+    @media (min-width: 640px) {
+      .stat-divider {
+        display: block;
+      }
+    }
+    
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-0.5rem);
+      }
+    }
+    
+    .scroll-indicator svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--muted-foreground);
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 6rem 1rem;
+      background: var(--secondary);
+    }
+    
+    @media (min-width: 640px) {
+      .features {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .features {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+    
+    .features-container {
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-title {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--foreground);
+      margin-bottom: 1rem;
+    }
+    
+    @media (min-width: 640px) {
+      .section-title {
+        font-size: 2.25rem;
+      }
+    }
+    
+    .section-subtitle {
+      max-width: 42rem;
+      margin: 0 auto;
+      font-size: 1.125rem;
+      color: var(--muted-foreground);
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .feature-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s;
+    }
+    
+    .feature-card:hover {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 0.5rem;
+      background: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      transition: background 0.2s;
+    }
+    
+    .feature-card:hover .feature-icon {
+      background: var(--border);
+    }
+    
+    .feature-icon svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var(--secondary-foreground);
+    }
+    
+    .feature-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--foreground);
+      margin-bottom: 0.5rem;
+    }
+    
+    .feature-description {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      line-height: 1.625;
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--background);
+      border-top: 1px solid var(--border);
+      padding: 3rem 1rem;
+    }
+    
+    @media (min-width: 640px) {
+      .footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      .footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+    
+    .footer-container {
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+    
+    .footer-brand {
+      grid-column: span 2;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      text-decoration: none;
+    }
+    
+    .footer-logo-icon {
+      width: 2rem;
+      height: 2rem;
+      background: var(--primary);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .footer-logo-icon span {
+      color: var(--primary-foreground);
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+    
+    .footer-logo-text {
+      font-weight: 600;
+      color: var(--foreground);
+    }
+    
+    .footer-description {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      margin-bottom: 1.5rem;
+      max-width: 20rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-link {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 0.5rem;
+      background: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted-foreground);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .social-link:hover {
+      background: var(--border);
+      color: var(--foreground);
+    }
+    
+    .social-link svg {
+      width: 1rem;
+      height: 1rem;
+    }
+    
+    .footer-column h4 {
+      font-weight: 600;
+      color: var(--foreground);
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .footer-links a {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--foreground);
+    }
+    
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    @media (min-width: 640px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+    
+    .footer-copyright {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+    
+    .footer-legal {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .footer-legal a {
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    .footer-legal a:hover {
+      color: var(--foreground);
+    }
+    
+    /* Spinner */
+    .spinner {
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid transparent;
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    /* Dark mode toggle (optional) */
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 50;
+      transition: all 0.2s;
+    }
+    
+    .theme-toggle:hover {
+      background: var(--border);
+    }
+    
+    .theme-toggle svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--foreground);
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+    <svg id="moonIcon" style="display: none;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+    </svg>
+  </button>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-blob-1"></div>
+    <div class="hero-blob-2"></div>
+    
+    <div class="hero-content">
+      <!-- Badge -->
+      <div class="badge">
+        <svg class="badge-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+        <span>Coming Soon</span>
+      </div>
+      
+      <!-- Title -->
+      <h1 class="hero-title">
+        Fashion meets<br>
+        <span class="gradient-text">intelligence</span>
+      </h1>
+      
+      <!-- Subtitle -->
+      <p class="hero-subtitle">
+        WearX uses AI to curate modern clothing and accessories tailored to your style. 
+        Join the waitlist for early access to the future of fashion.
+      </p>
+      
+      <!-- Waitlist Form -->
+      <div class="waitlist-card" id="waitlistFormContainer">
+        <form id="waitlistForm">
+          <div class="form-group">
+            <label for="email" class="form-label">Email address</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="form-input" 
+                placeholder="you@example.com" 
+                required
+              >
+            </div>
+            <p class="form-error" id="emailError" style="display: none;">Please enter a valid email address</p>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <span id="btnText">Join the waitlist</span>
+            <svg id="btnIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 1rem; height: 1rem;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+            <div class="spinner" id="btnSpinner" style="display: none;"></div>
+          </button>
+          <p class="form-footer">No spam, ever. Unsubscribe anytime.</p>
+        </form>
+      </div>
+      
+      <!-- Success State (hidden by default) -->
+      <div class="waitlist-card" id="successState" style="display: none;">
+        <div class="success-state">
+          <div class="success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="success-title">You're on the list!</h3>
+          <p class="success-message">We'll notify you when we launch. Thank you for your interest!</p>
+        </div>
+      </div>
+      
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-value">2,500+</div>
+          <div class="stat-label">Early adopters</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-value">50+</div>
+          <div class="stat-label">Countries</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-value">99.9%</div>
+          <div class="stat-label">Uptime</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="features-container">
+      <div class="section-header">
+        <h2 class="section-title">Fashion, reimagined</h2>
+        <p class="section-subtitle">AI-powered style curation meets seamless shopping. Discover clothing and accessories that feel like you.</p>
+      </div>
+      
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <h3 class="feature-title">AI Style Curator</h3>
+          <p class="feature-description">Our AI learns your preferences and curates personalized clothing and accessory recommendations just for you.</p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Seamless Shopping</h3>
+          <p class="feature-description">One-tap checkout, saved preferences, and intelligent size recommendations. Shopping made effortless.</p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Visual Discovery</h3>
+          <p class="feature-description">Upload photos or describe your style. Our AI finds matching pieces from our curated collection.</p>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Fast Delivery</h3>
+          <p class="feature-description">Free express shipping on orders over $50. Track your style from warehouse to wardrobe in real-time.</p>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Style Community</h3>
+          <p class="feature-description">Connect with fashion enthusiasts. Share outfits, get feedback, and discover trending looks.</p>
+        </div>
+        
+        <!-- Feature 6 -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Trend Forecasting</h3>
+          <p class="feature-description">Stay ahead of the curve. Our AI predicts upcoming trends so you're always in style.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">
+            <div class="footer-logo-icon">
+              <span>W</span>
+            </div>
+            <span class="footer-logo-text">WearX</span>
+          </a>
+          <p class="footer-description">AI-powered fashion curation. Discover clothing and accessories that match your unique style.</p>
+          <div class="social-links">
+            <a href="https://twitter.com/wearx" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com/wearx" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </a>
+            <a href="https://github.com/wearx" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </a>
+            <a href="mailto:hello@wearx.app" class="social-link" aria-label="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Product -->
+        <div class="footer-column">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="#features">AI Stylist</a></li>
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        
+        <!-- Company -->
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#press">Press</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <!-- Resources -->
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#style-guide">Style Guide</a></li>
+            <li><a href="#size-chart">Size Chart</a></li>
+            <li><a href="#shipping">Shipping Info</a></li>
+            <li><a href="#returns">Returns</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Bottom -->
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2025 WearX. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms of Service</a>
+          <a href="#cookies">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = document.getElementById('sunIcon');
+    const moonIcon = document.getElementById('moonIcon');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or default to light
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    if (savedTheme === 'dark') {
+      html.classList.add('dark');
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const isDark = html.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      sunIcon.style.display = isDark ? 'none' : 'block';
+      moonIcon.style.display = isDark ? 'block' : 'none';
+    });
+    
+    // Formspree Integration
+    const FORMSPREE_URL = 'https://formspree.io/f/xeelzopo';
+    const waitlistForm = document.getElementById('waitlistForm');
+    const waitlistFormContainer = document.getElementById('waitlistFormContainer');
+    const successState = document.getElementById('successState');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+    const btnSpinner = document.getElementById('btnSpinner');
+    const emailError = document.getElementById('emailError');
+    
+    waitlistForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        emailError.style.display = 'block';
+        return;
+      }
+      emailError.style.display = 'none';
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      btnText.textContent = 'Joining...';
+      btnIcon.style.display = 'none';
+      btnSpinner.style.display = 'block';
+      
+      try {
+        const response = await fetch(FORMSPREE_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email,
+            source: 'wearx_website',
+            date: new Date().toISOString()
+          })
+        });
+        
+        if (response.ok) {
+          // Hide form, show success
+          waitlistFormContainer.style.display = 'none';
+          successState.style.display = 'block';
+          
+          // Track in GA
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'waitlist_signup', {
+              event_category: 'engagement',
+              event_label: 'formspree'
+            });
+          }
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        console.error('Waitlist submission error:', error);
+        alert('Failed to submit. Please try again.');
+        
+        // Reset button state
+        submitBtn.disabled = false;
+        btnText.textContent = 'Join the waitlist';
+        btnIcon.style.display = 'block';
+        btnSpinner.style.display = 'none';
+      }
+    });
+    
+    // Hide error when user starts typing
+    document.getElementById('email').addEventListener('input', () => {
+      emailError.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
