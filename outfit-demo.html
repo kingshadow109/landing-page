@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfit Demo - WearX</title>
+    <meta name="description" content="Experience WearX AI-powered outfit recommendations. Get personalized style suggestions for any occasion.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #18181b;
+            --card: #ffffff;
+            --card-foreground: #18181b;
+            --primary: #18181b;
+            --primary-foreground: #fafafa;
+            --secondary: #f4f4f5;
+            --secondary-foreground: #18181b;
+            --muted: #f4f4f5;
+            --muted-foreground: #71717a;
+            --accent: #f4f4f5;
+            --accent-foreground: #18181b;
+            --border: #e4e4e7;
+            --input: #e4e4e7;
+            --ring: #a1a1aa;
+            --radius: 0.625rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+        
+        @media (min-width: 640px) {
+            .navbar-container {
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .navbar-container {
+                padding: 0 2rem;
+            }
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        
+        .nav-logo:hover {
+            opacity: 0.8;
+        }
+        
+        .nav-logo-icon {
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--primary-foreground);
+        }
+        
+        .nav-logo-text {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--foreground);
+        }
+        
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+        
+        .nav-link {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--foreground);
+            background: var(--secondary);
+        }
+        
+        .nav-link.active {
+            color: var(--foreground);
+            background: var(--secondary);
+        }
+        
+        .nav-cta {
+            display: none;
+            padding: 0.5rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary-foreground);
+            background: var(--primary);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-cta {
+                display: inline-flex;
+            }
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--secondary);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        .mobile-menu-btn:hover {
+            background: var(--border);
+        }
+        
+        .mobile-menu-btn svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: var(--foreground);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 4rem;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            z-index: 999;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--foreground);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+        }
+        
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+            background: var(--secondary);
+        }
+        
+        .mobile-nav-cta {
+            display: block;
+            margin-top: 0.5rem;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-foreground);
+            background: var(--primary);
+            text-align: center;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+        }
+        
+        .mobile-nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* ===== DEMO CONTENT ===== */
+        .demo-page {
+            padding-top: 4rem;
+            min-height: 100vh;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        @media (min-width: 640px) {
+            .demo-header {
+                padding: 4rem 1.5rem;
+            }
+        }
+        
+        .demo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+        
+        .demo-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 0.75rem;
+        }
+        
+        @media (min-width: 640px) {
+            .demo-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .demo-subtitle {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .demo-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .demo-container {
+                padding: 3rem 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .demo-container {
+                padding: 3rem 2rem;
+            }
+        }
+        
+        /* Outfit Demo Specific Styles */
+        .occasion-selector {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .occasion-btn {
+            padding: 0.75rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .occasion-btn:hover, .occasion-btn.active {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            border-color: var(--primary);
+        }
+        
+        .outfit-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .outfit-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-4px);
+        }
+        
+        .outfit-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+        }
+        
+        .outfit-match {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(34, 197, 94, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .outfit-details {
+            padding: 1.5rem;
+        }
+        
+        .outfit-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+        }
+        
+        .outfit-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .outfit-item-tag {
+            padding: 0.375rem 0.75rem;
+            background: var(--secondary);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--secondary-foreground);
+        }
+        
+        .outfit-description {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .outfit-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .outfit-btn {
+            flex: 1;
+            padding: 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: var(--radius);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .outfit-btn-primary {
+            background: var(--primary);
+            color: var(--primary-foreground);
+        }
+        
+        .outfit-btn-primary:hover {
+            opacity: 0.9;
+        }
+        
+        .outfit-btn-secondary {
+            background: var(--secondary);
+            color: var(--secondary-foreground);
+        }
+        
+        .outfit-btn-secondary:hover {
+            background: var(--border);
+        }
+        
+        /* Outfit Grid for More Options */
+        .outfit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .outfit-mini-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .outfit-mini-card:hover {
+            border-color: var(--ring);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .outfit-mini-emoji {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .outfit-mini-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--foreground);
+        }
+        
+        /* Navigation between demos */
+        .demo-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .demo-nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--foreground);
+            background: var(--secondary);
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .demo-nav-link:hover {
+            background: var(--border);
+        }
+        
+        .demo-nav-link svg {
+            width: 1rem;
+            height: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .cta-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-foreground);
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--background);
+            border-top: 1px solid var(--border);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-text {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+        
+        .page-transition {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="page-transition">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="demo-index.html" class="nav-logo">
+                <div class="nav-logo-icon">W</div>
+                <span class="nav-logo-text">WearX</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="demo-index.html" class="nav-link">Home</a>
+                <a href="wardrobe-demo.html" class="nav-link">Wardrobe</a>
+                <a href="outfit-demo.html" class="nav-link active">Outfits</a>
+                <a href="style-dna-demo.html" class="nav-link">Style DNA</a>
+                <a href="value-tracker-demo.html" class="nav-link">Value Tracker</a>
+            </div>
+            
+            <a href="../index.html#waitlist" class="nav-cta">Join Beta</a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="closeIcon" style="display: none;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="demo-index.html" class="mobile-nav-link">Home</a>
+        <a href="wardrobe-demo.html" class="mobile-nav-link">Wardrobe</a>
+        <a href="outfit-demo.html" class="mobile-nav-link active">Outfits</a>
+        <a href="style-dna-demo.html" class="mobile-nav-link">Style DNA</a>
+        <a href="value-tracker-demo.html" class="mobile-nav-link">Value Tracker</a>
+        <a href="../index.html#waitlist" class="mobile-nav-cta">Join Beta</a>
+    </div>
+    
+    <!-- Demo Page Content -->
+    <div class="demo-page">
+        <header class="demo-header">
+            <div class="demo-badge">✨ Outfit Demo</div>
+            <h1 class="demo-title">AI Outfit Recommendations</h1>
+            <p class="demo-subtitle">Get personalized outfit suggestions based on occasion, weather, and your unique style preferences.</p>
+        </header>
+        
+        <div class="demo-container">
+            <!-- Occasion Selector -->
+            <div class="occasion-selector">
+                <button class="occasion-btn active" data-occasion="casual">
+                    ☕ Casual
+                </button>
+                <button class="occasion-btn" data-occasion="work">
+                    💼 Work
+                </button>
+                <button class="occasion-btn" data-occasion="date">
+                    💕 Date Night
+                </button>
+                <button class="occasion-btn" data-occasion="party">
+                    🎉 Party
+                </button>
+                <button class="occasion-btn" data-occasion="workout">
+                    🏃 Workout
+                </button>
+            </div>
+            
+            <!-- Main Outfit Card -->
+            <div class="outfit-card" id="mainOutfit">
+                <div class="outfit-image">
+                    👕👖👟
+                    <span class="outfit-match">98% Match</span>
+                </div>
+                <div class="outfit-details">
+                    <h3 class="outfit-name">Smart Casual Weekend</h3>
+                    
+                    <div class="outfit-items">
+                        <span class="outfit-item-tag">Navy T-Shirt</span>
+                        <span class="outfit-item-tag">Slim Jeans</span>
+                        <span class="outfit-item-tag">White Sneakers</span>
+                        <span class="outfit-item-tag">Denim Jacket</span>
+                    </div>
+                    
+                    <p class="outfit-description">Perfect for a relaxed weekend brunch or casual meetup with friends. This combination balances comfort with style.</p>
+                    
+                    <div class="outfit-actions">
+                        <button class="outfit-btn outfit-btn-primary" onclick="alert('Outfit saved to your favorites!')">
+                            ❤️ Save
+                        </button>
+                        <button class="outfit-btn outfit-btn-secondary" onclick="alert('New outfit generated!')">
+                            🔄 Refresh
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- More Outfit Options -->
+            <h3 style="margin-top: 3rem; margin-bottom: 1rem; text-align: center; font-size: 1.125rem; color: var(--muted-foreground);">More outfit ideas for you</h3>
+            
+            <div class="outfit-grid">
+                <div class="outfit-mini-card" onclick="changeOutfit('relaxed')">
+                    <div class="outfit-mini-emoji">👕🩳</div>
+                    <div class="outfit-mini-name">Relaxed Summer</div>
+                </div>
+                
+                <div class="outfit-mini-card" onclick="changeOutfit('street')">
+                    <div class="outfit-mini-emoji">🧥👟</div>
+                    <div class="outfit-mini-name">Street Style</div>
+                </div>
+                
+                <div class="outfit-mini-card" onclick="changeOutfit('minimal')">
+                    <div class="outfit-mini-emoji">⬜⬛</div>
+                    <div class="outfit-mini-name">Minimal Chic</div>
+                </div>
+                
+                <div class="outfit-mini-card" onclick="changeOutfit('layered')">
+                    <div class="outfit-mini-emoji">🥼🧣</div>
+                    <div class="outfit-mini-name">Layered Look</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation between demos -->
+        <div class="demo-nav">
+            <a href="wardrobe-demo.html" class="demo-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Previous: Wardrobe
+            </a>
+            <a href="style-dna-demo.html" class="demo-nav-link">
+                Next: Style DNA
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Never wonder what to wear again</h2>
+            <p class="cta-text">Get unlimited AI-powered outfit recommendations tailored to your style and occasion.</p>
+            <a href="../index.html#waitlist" class="cta-button">Try Beta Free →</a>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">© 2025 WearX. All rights reserved. <a href="demo-index.html" style="color: inherit;">Back to Demos</a></p>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const isOpen = mobileMenu.classList.contains('open');
+            menuIcon.style.display = isOpen ? 'none' : 'block';
+            closeIcon.style.display = isOpen ? 'block' : 'none';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            });
+        });
+        
+        // Occasion Selection
+        const occasionBtns = document.querySelectorAll('.occasion-btn');
+        const outfitData = {
+            casual: {
+                emoji: '👕👖👟',
+                name: 'Smart Casual Weekend',
+                items: ['Navy T-Shirt', 'Slim Jeans', 'White Sneakers', 'Denim Jacket'],
+                description: 'Perfect for a relaxed weekend brunch or casual meetup with friends. This combination balances comfort with style.',
+                match: '98%'
+            },
+            work: {
+                emoji: '👔👞💼',
+                name: 'Professional Business',
+                items: ['White Dress Shirt', 'Navy Blazer', 'Chinos', 'Leather Oxfords'],
+                description: 'A polished look for important meetings and professional settings. Classic colors with modern tailoring.',
+                match: '95%'
+            },
+            date: {
+                emoji: '🕴️👢✨',
+                name: 'Date Night Elegance',
+                items: ['Black Turtleneck', 'Dark Jeans', 'Chelsea Boots', 'Leather Belt'],
+                description: 'Sophisticated yet approachable. Perfect for dinner dates or evening events where you want to impress.',
+                match: '97%'
+            },
+            party: {
+                emoji: '🎩🥾🎊',
+                name: 'Night Out Style',
+                items: ['Graphic Tee', 'Black Jeans', 'Statement Sneakers', 'Bomber Jacket'],
+                description: 'Bold and confident for social gatherings. Stand out while staying comfortable on the dance floor.',
+                match: '94%'
+            },
+            workout: {
+                emoji: '🎽🏃👟',
+                name: 'Active Performance',
+                items: ['Tech Tee', 'Running Shorts', 'Running Shoes', 'Sports Watch'],
+                description: 'Optimized for movement and breathability. Hit your fitness goals in style and comfort.',
+                match: '99%'
+            }
+        };
+        
+        occasionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                occasionBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const occasion = btn.dataset.occasion;
+                const outfit = outfitData[occasion];
+                
+                document.querySelector('.outfit-image').innerHTML = `
+                    ${outfit.emoji}
+                    <span class="outfit-match">${outfit.match} Match</span>
+                `;
+                document.querySelector('.outfit-name').textContent = outfit.name;
+                document.querySelector('.outfit-description').textContent = outfit.description;
+                
+                const itemsContainer = document.querySelector('.outfit-items');
+                itemsContainer.innerHTML = outfit.items.map(item => 
+                    `<span class="outfit-item-tag">${item}</span>`
+                ).join('');
+            });
+        });
+        
+        // Change outfit function
+        function changeOutfit(style) {
+            const styles = {
+                relaxed: { emoji: '👕🩳👟', name: 'Relaxed Summer', match: '96%' },
+                street: { emoji: '🧥👖👟', name: 'Street Style', match: '93%' },
+                minimal: { emoji: '⬜⬛👞', name: 'Minimal Chic', match: '91%' },
+                layered: { emoji: '🥼🧣👢', name: 'Layered Look', match: '95%' }
+            };
+            
+            const outfit = styles[style];
+            document.querySelector('.outfit-image').innerHTML = `
+                ${outfit.emoji}
+                <span class="outfit-match">${outfit.match} Match</span>
+            `;
+            document.querySelector('.outfit-name').textContent = outfit.name;
+        }
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

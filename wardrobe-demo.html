@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wardrobe Demo - WearX</title>
+    <meta name="description" content="Experience WearX AI-powered wardrobe management. Digitize your closet and organize your fashion.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --background: #ffffff;
+            --foreground: #18181b;
+            --card: #ffffff;
+            --card-foreground: #18181b;
+            --primary: #18181b;
+            --primary-foreground: #fafafa;
+            --secondary: #f4f4f5;
+            --secondary-foreground: #18181b;
+            --muted: #f4f4f5;
+            --muted-foreground: #71717a;
+            --accent: #f4f4f5;
+            --accent-foreground: #18181b;
+            --border: #e4e4e7;
+            --input: #e4e4e7;
+            --ring: #a1a1aa;
+            --radius: 0.625rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+        
+        @media (min-width: 640px) {
+            .navbar-container {
+                padding: 0 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .navbar-container {
+                padding: 0 2rem;
+            }
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        
+        .nav-logo:hover {
+            opacity: 0.8;
+        }
+        
+        .nav-logo-icon {
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+            color: var(--primary-foreground);
+        }
+        
+        .nav-logo-text {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--foreground);
+        }
+        
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+        
+        .nav-link {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--foreground);
+            background: var(--secondary);
+        }
+        
+        .nav-link.active {
+            color: var(--foreground);
+            background: var(--secondary);
+        }
+        
+        .nav-cta {
+            display: none;
+            padding: 0.5rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary-foreground);
+            background: var(--primary);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-cta {
+                display: inline-flex;
+            }
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--secondary);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        .mobile-menu-btn:hover {
+            background: var(--border);
+        }
+        
+        .mobile-menu-btn svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: var(--foreground);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 4rem;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            z-index: 999;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--foreground);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+        }
+        
+        .mobile-nav-link:hover, .mobile-nav-link.active {
+            background: var(--secondary);
+        }
+        
+        .mobile-nav-cta {
+            display: block;
+            margin-top: 0.5rem;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-foreground);
+            background: var(--primary);
+            text-align: center;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+        }
+        
+        .mobile-nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* ===== DEMO CONTENT ===== */
+        .demo-page {
+            padding-top: 4rem;
+            min-height: 100vh;
+        }
+        
+        .demo-header {
+            background: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        @media (min-width: 640px) {
+            .demo-header {
+                padding: 4rem 1.5rem;
+            }
+        }
+        
+        .demo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            margin-bottom: 1rem;
+        }
+        
+        .demo-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 0.75rem;
+        }
+        
+        @media (min-width: 640px) {
+            .demo-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .demo-subtitle {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .demo-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .demo-container {
+                padding: 3rem 1.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .demo-container {
+                padding: 3rem 2rem;
+            }
+        }
+        
+        /* Wardrobe Demo Specific Styles */
+        .upload-zone {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--secondary);
+            transition: all 0.2s;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+        
+        .upload-zone:hover {
+            border-color: var(--ring);
+            background: var(--accent);
+        }
+        
+        .upload-zone.dragover {
+            border-color: var(--primary);
+            background: rgba(24, 24, 27, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .upload-text {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+        }
+        
+        .upload-hint {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+        
+        .wardrobe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .wardrobe-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        
+        .wardrobe-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .wardrobe-item-image {
+            aspect-ratio: 1;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        
+        .wardrobe-item-info {
+            padding: 0.75rem;
+        }
+        
+        .wardrobe-item-category {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .wardrobe-item-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--foreground);
+            margin-top: 0.25rem;
+        }
+        
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            border-color: var(--primary);
+        }
+        
+        /* Navigation between demos */
+        .demo-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .demo-nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--foreground);
+            background: var(--secondary);
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .demo-nav-link:hover {
+            background: var(--border);
+        }
+        
+        .demo-nav-link svg {
+            width: 1rem;
+            height: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .cta-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-foreground);
+            border-radius: var(--radius);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--background);
+            border-top: 1px solid var(--border);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .footer-text {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+        
+        .page-transition {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="page-transition">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="demo-index.html" class="nav-logo">
+                <div class="nav-logo-icon">W</div>
+                <span class="nav-logo-text">WearX</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="demo-index.html" class="nav-link">Home</a>
+                <a href="wardrobe-demo.html" class="nav-link active">Wardrobe</a>
+                <a href="outfit-demo.html" class="nav-link">Outfits</a>
+                <a href="style-dna-demo.html" class="nav-link">Style DNA</a>
+                <a href="value-tracker-demo.html" class="nav-link">Value Tracker</a>
+            </div>
+            
+            <a href="../index.html#waitlist" class="nav-cta">Join Beta</a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg id="closeIcon" style="display: none;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="demo-index.html" class="mobile-nav-link">Home</a>
+        <a href="wardrobe-demo.html" class="mobile-nav-link active">Wardrobe</a>
+        <a href="outfit-demo.html" class="mobile-nav-link">Outfits</a>
+        <a href="style-dna-demo.html" class="mobile-nav-link">Style DNA</a>
+        <a href="value-tracker-demo.html" class="mobile-nav-link">Value Tracker</a>
+        <a href="../index.html#waitlist" class="mobile-nav-cta">Join Beta</a>
+    </div>
+    
+    <!-- Demo Page Content -->
+    <div class="demo-page">
+        <header class="demo-header">
+            <div class="demo-badge">👕 Wardrobe Demo</div>
+            <h1 class="demo-title">Your Digital Closet</h1>
+            <p class="demo-subtitle">Upload photos of your clothes and let AI automatically categorize and organize your entire wardrobe.</p>
+        </header>
+        
+        <div class="demo-container">
+            <!-- Upload Zone -->
+            <div class="upload-zone" id="uploadZone">
+                <div class="upload-icon">📸</div>
+                <div class="upload-text">Drop photos here or click to upload</div>
+                <div class="upload-hint">Supports JPG, PNG • AI will auto-categorize your items</div>
+            </div>
+            
+            <!-- Category Filter -->
+            <div class="category-filter">
+                <button class="category-btn active" data-category="all">All Items</button>
+                <button class="category-btn" data-category="tops">Tops</button>
+                <button class="category-btn" data-category="bottoms">Bottoms</button>
+                <button class="category-btn" data-category="shoes">Shoes</button>
+                <button class="category-btn" data-category="accessories">Accessories</button>
+            </div>
+            
+            <!-- Wardrobe Grid -->
+            <div class="wardrobe-grid" id="wardrobeGrid">
+                <div class="wardrobe-item" data-category="tops">
+                    <div class="wardrobe-item-image">👔</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Top</div>
+                        <div class="wardrobe-item-name">White Dress Shirt</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-item" data-category="bottoms">
+                    <div class="wardrobe-item-image">👖</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Bottom</div>
+                        <div class="wardrobe-item-name">Blue Jeans</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-item" data-category="shoes">
+                    <div class="wardrobe-item-image">👟</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Shoes</div>
+                        <div class="wardrobe-item-name">White Sneakers</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-item" data-category="tops">
+                    <div class="wardrobe-item-image">🧥</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Top</div>
+                        <div class="wardrobe-item-name">Denim Jacket</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-item" data-category="accessories">
+                    <div class="wardrobe-item-image">⌚</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Accessory</div>
+                        <div class="wardrobe-item-name">Leather Watch</div>
+                    </div>
+                </div>
+                
+                <div class="wardrobe-item" data-category="bottoms">
+                    <div class="wardrobe-item-image">🩳</div>
+                    <div class="wardrobe-item-info">
+                        <div class="wardrobe-item-category">Bottom</div>
+                        <div class="wardrobe-item-name">Khaki Shorts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation between demos -->
+        <div class="demo-nav">
+            <a href="demo-index.html" class="demo-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to Demos
+            </a>
+            <a href="outfit-demo.html" class="demo-nav-link">
+                Next: Outfits
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Ready to digitize your wardrobe?</h2>
+            <p class="cta-text">Join thousands of users who have transformed their fashion experience with WearX.</p>
+            <a href="../index.html#waitlist" class="cta-button">Try Beta Free →</a>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">© 2025 WearX. All rights reserved. <a href="demo-index.html" style="color: inherit;">Back to Demos</a></p>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            const isOpen = mobileMenu.classList.contains('open');
+            menuIcon.style.display = isOpen ? 'none' : 'block';
+            closeIcon.style.display = isOpen ? 'block' : 'none';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            });
+        });
+        
+        // Category Filter
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const wardrobeItems = document.querySelectorAll('.wardrobe-item');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active button
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Filter items
+                const category = btn.dataset.category;
+                wardrobeItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Upload Zone Interaction
+        const uploadZone = document.getElementById('uploadZone');
+        
+        uploadZone.addEventListener('click', () => {
+            alert('In the full app, this would open your camera roll to upload items!');
+        });
+        
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+        
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+        
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            alert('In the full app, your items would be uploaded and AI-categorized!');
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
