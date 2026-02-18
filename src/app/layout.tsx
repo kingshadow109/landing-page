@@ -65,18 +65,20 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
-                var script = document.createElement('script');
-                script.async = true;
-                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-FSP1DKFFWV';
-                document.head.appendChild(script);
-                
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                window.gtag = gtag;
-                gtag('js', new Date());
-                gtag('config', 'G-FSP1DKFFWV');
-              })();
+              // Inject GA directly into head
+              var gaScript = document.createElement('script');
+              gaScript.async = true;
+              gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-FSP1DKFFWV';
+              document.head.appendChild(gaScript);
+              
+              // Initialize gtag immediately
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              window.gtag = gtag;
+              gtag('js', new Date());
+              gtag('config', 'G-FSP1DKFFWV');
+              
+              console.log('GA injected at:', new Date().toISOString());
             `,
           }}
         />
@@ -85,6 +87,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
+        
+        <iframe 
+          src="/ga-bridge.html" 
+          style={{ position: 'absolute', width: 0, height: 0, border: 0 }}
+          title="GA Bridge"
+        />
       </body>
     </html>
   );
