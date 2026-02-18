@@ -16,6 +16,9 @@ const waitlistSchema = z.object({
 
 type WaitlistFormValues = z.infer<typeof waitlistSchema>;
 
+// Formspree endpoint
+const FORMSPREE_URL = "https://formspree.io/f/xeelzopo";
+
 export function WaitlistForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,19 +34,30 @@ export function WaitlistForm() {
   const onSubmit = async (data: WaitlistFormValues) => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/waitlist", {
+      // Submit to Formspree
+      const response = await fetch(FORMSPREE_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: data.email }),
+        body: JSON.stringify({
+          email: data.email,
+          source: "wearx_website",
+          date: new Date().toISOString(),
+        }),
       });
 
       if (response.ok) {
         setIsSubmitted(true);
+        // Track in GA
+        if (typeof window !== "undefined" && (window as any).gtag) {
+          (window as any).gtag("event", "waitlist_signup", {
+            event_category: "engagement",
+            event_label: "formspree",
+          });
+        }
       } else {
-        const error = await response.json();
-        alert(error.error || "Something went wrong. Please try again.");
+        throw new Error("Form submission failed");
       }
     } catch (error) {
       console.error("Waitlist submission error:", error);
